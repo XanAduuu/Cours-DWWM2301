@@ -1,0 +1,54 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    display: grid;
+    height: 100vh;
+    /* 
+        Si on a nommé nos éléments à placer, 
+        on peut les placer directement grâce à grid-template-areas
+        Attention à bien écrire les noms et à respecter le nombre de case qui doit être le même pour chaque lignes.
+        chaque lignes est un "" différents. et chaque colonne est un nom séparé d'un espace.
+    */
+    grid-template-areas: 
+    "header header header header header header" 
+    "menu article article article chaussette chaussette" 
+    "menu footer footer footer footer footer";
+    /* 
+        Avec cette solution les lignes et colonnes font toute la même taille, mais on peut les combiner avec grid-template-columns et rows pour indiquer leurs tailles.
+    */
+    grid-template-rows: 1fr 3fr 1fr;
+    /* 
+        Quand on utilise plusieurs unités "fr" il faut imaginer cela comme des fractions, ici avec 1fr 3fr 1fr, j'ai au total 5fr
+        la première rangé prend donc 1/5ème, la seconde 3/5ème et la dernière 1/5ème.
+    */
+}
+.item1
+{
+    background: blue;
+    /* Je peux aussi utiliser grid-area pour nommer mes éléments dans ma grid. */
+    grid-area: header;
+}
+.item2
+{
+    background: red;
+    grid-area: menu;
+}
+.item3
+{
+    background: yellow;
+    grid-area: article;
+}
+.item4
+{
+    background: green;
+    grid-area: chaussette;
+}
+.item5
+{
+    background: pink;
+    grid-area: footer;
+}

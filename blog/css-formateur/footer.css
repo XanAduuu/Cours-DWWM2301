@@ -1,0 +1,52 @@
+/* Footer des pages */
+footer.pageFooter,
+.pageFooter :where(.left, .right, .bottom, fieldset)
+{
+    padding: var(--default-pading);
+}
+footer.pageFooter
+{
+    background-color: chartreuse;
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+}
+.pageFooter .left ol
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.pageFooter .left ul
+{
+    padding-left: 10px;
+}
+.pageFooter .left li
+{
+    line-height: 1.3em;
+}
+.pageFooter .right fieldset
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.pageFooter .right button[type="submit"]
+{
+    padding: var(--default-pading);
+    text-transform:uppercase;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+.pageFooter .right label
+{
+    display: block;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+.pageFooter .bottom
+{
+    text-align: center;
+}

@@ -1,0 +1,89 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    min-height: 100vh;
+    /* Le display grid se place sur le parent (conteneur) des éléments que l'on souhaite déplacer */
+    display: grid;
+    /* 
+        grid-template-rows permet d'indiquer le nombre et la taille des rangés de ma grille.
+        chaque rangés est séparé d'un espace, avec en valeur, la hauteur de cette rangé.
+
+        auto indique que la rangé prendra juste la place dont elle a besoin.
+        1fr utilisé sans autre unité fr, signifie prend le reste de la place.
+    */
+    grid-template-rows: auto 1fr auto;
+}
+main
+{
+    display: grid;
+    /* 
+        grid-template-columns indique la taille et le nombre de colonnes voulu.
+        Il fonctionne comme grid-template-rows
+
+        repeat() permet de répéter une valeur plusieurs fois.
+        ici le repeat est équivalent à écrire : 
+        grid-template-columns: 15% 15% 15% 15% 15%;
+    */
+    grid-template-columns: repeat(5, 15%);
+    grid-template-rows: 20vh auto 200px 100px;
+    /* Si la largeur de mes colonnes est inferieur à la largeur du conteneur, je peux espacer mes colonnes avec "justify-content" : */
+    justify-content: space-evenly;
+    /* On peut aussi suivant les même règles, aligner la grille verticalement avec align-content */
+}
+main > div:nth-child(1)
+{
+    background-color: lightgreen;
+    /* Permet d'indiquer à partir de quelle colonne mon élément commence. */
+    grid-column-start: 2;
+    /* Indique jusqu'à quelle colonne mon élément s'étend. (la colonne n'est pas comprise, ici en indiquant 5, ma div va jusqu'à la colonne 4) */
+    grid-column-end: 5;
+    /* grid-row-start et end fonctionnent de même pour les rangés */
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+main > div:nth-child(2)
+{
+    background-color: lightblue;
+    /* Les propriétés grid-column-start et end peuvent être résumés par "grid-column: start/end;" */
+    grid-column: 1/2;
+    /* De même pour les rangés */
+    grid-row: 1/3;
+}
+main > div:nth-child(3)
+{
+    background-color: lightcoral;
+    /* 
+        On peut résumer grid-column et grid-row par 
+            
+        grid-area: row-start / column-start / row-end / column-end
+
+    */
+    grid-area: 1 / 5 / 4 / 6;
+}
+main > div:nth-child(4)
+{
+    background-color: lightseagreen;
+    /* 
+        Plutôt qu'indiquer une position de fin, 
+        on peut utiliser le mot clef "span" pour indique combien de case l'élément HTML doit prendre.
+        Ici j'indique que mon élément commence à la rangé 3 et fait 2 cases de hauteur.
+    */
+    grid-row: 3/ span 2;
+    grid-column: 1/span 2;
+}
+main > div:nth-child(5)
+{
+    background-color: lightgoldenrodyellow;
+    /* 
+        Attention, on peut volontairement, ou involontairement avoir nos cases qui s'empilent les une sur les autres.
+    */
+    grid-row: 2/ span 2;
+    grid-column: 2 / span 2;
+}
+/* 
+    Les éléments HTML non placé viendront juste prendre les cases restantes, et si il n'y en a pas, elles créeront de nouvelles rangés
+*/

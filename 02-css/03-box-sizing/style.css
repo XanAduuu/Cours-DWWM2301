@@ -1,0 +1,117 @@
+*, ::after, ::before
+{
+    /* 
+        plusieurs balises ont un margin et un padding par défaut.
+        Certains développeurs n'aiment pas ces valeurs par défaut et souhaitent les définir personnellements.
+        ils feront donc un reset de tout les éléments "*" avec un padding et un margin de 0.
+    */
+    padding: 0;
+    margin: 0;
+    /* 
+        Par défaut, la largeur d'un élément ne prend en compte que sa boîte de contenu, ce qui peut entrainer un décalage si on lui donne une bordure par exemple.
+        Pour éviter cela on peut indiquer que la taille d'un élément prend en compte jusqu'à sa boite de bordure avec la propriété suivante:
+    */
+    box-sizing: border-box;
+}
+header
+{
+    background-color: aqua;
+    /* Utiliser une image en fond */
+    background-image: url("../../ressources/images/paysage/ville.jpg");
+    /* Demander au fond de ne pas se répéter */
+    background-repeat: no-repeat;
+    /* Choisir si l'image doit être contenu par l'élément ou couvrir celui ci */
+    background-size: cover;
+    /* Choisir la partie visible de l'image (en la positionnant) */
+    background-position: center;
+}
+main
+{
+    background-color: rgb(167, 145, 187);
+}
+article
+{
+    /* Choisir la largeur d'un élément */
+    width: 49%;
+    /* Choisir le display d'un élément, (block, inline, inline-block ou autres) */
+    display: inline-block;
+    /* Les propriétés de bordure "border-xxx" permettant d'afficher la bordure d'un élément,
+    peuvent aussi être résumé avec la propriété "border" suivi des différentes valeurs séparés d'un espace. */
+
+    /* border-color: black;
+    border-style: solid;
+    border-width: 5px; */
+
+    border: 5px solid black;
+
+    /* padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-right: 10px; */
+    /* padding: 5px 10px 5px 10px; */
+    padding: 5px 10px;
+    /* 
+        les propriétés "padding-xxx" permettent d'ajouter une marge interne à l'élément au côté donné.
+        Elles peuvent être résumé avec la propriété "padding"
+        En lui donnant une seule valeur, tous les côtés auront la même valeur.
+        En lui donnant deux valeurs, la première sera pour la vertical et la seconde pour l'horizontal
+        En lui donnant 4 valeurs, la première sera le haut, puis les autres suivront le sens des aiguilles d'une montre.
+    */
+    /* Les propriétés de margin, ajoute une marge à l'exterieur de la bordure. Elles suivent les mêmes règles que le padding. */
+    margin: 20px auto 20px 5px;
+}
+h1
+{
+    font-size: 42px;
+    /* Gère l'alignement des éléments inline */
+    text-align: center;
+    /* .8em = 0.8em */
+    padding: .8em .1em;
+    color: antiquewhite;
+}
+p
+{
+    font-size: 20px;
+}
+p::first-letter
+{
+    font-size: 2em;
+}
+footer
+{
+    background-color: chartreuse;
+    /* Une hauteur minimum si son contenu est plus petit */
+    min-height: 50px;
+    /* On peut aussi donner une hauteur maximum avec "max-height"
+    Ou une hauteur fixe avec "height" 
+    Cela fonctionne aussi avec la largeur "width", "min-width" et "max-width"*/
+}
+li
+{
+    display: inline-block;
+    background-color: aqua;
+    /* Gère le ratio de la taille de l'élément, en se basant soit sur la hauteur, soit sur la largeur, l'autre valeur est calculé.
+    avec 1/1 l'élément devient donc carré */
+    aspect-ratio: 1/1;
+    /* Permet d'arrondir les angles de l'élément html. 
+    à 50% on obtient un cercle */
+    border-radius: 50%;
+    padding: 1rem 5px;
+    margin-left: 15%;
+}
+div
+{
+    width: 40vw;
+    max-height: 90vh;
+    /* Un margin auto sur la gauche et la droite d'un élément block avec une largeur donnée peut permettre de le centrer */
+    margin: 5px auto;
+}
+img
+{
+    width: 100%;
+    height: 20vh;
+    /* fonctionne comme background-size mais adapté à une balise img et son parent. */
+    object-fit: cover;
+    /* fonctionne comme background-position mais adapté à une balise img et son parent */
+    object-position: center;
+}

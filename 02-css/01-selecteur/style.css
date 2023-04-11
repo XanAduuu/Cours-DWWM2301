@@ -1,0 +1,157 @@
+main
+{
+    background-color: aquamarine;
+}
+footer
+{
+    background-color: darkcyan !important;
+}
+header
+{
+    background-color: firebrick;
+}
+/* ---------------- Enfant direct ou indirect ---------------- */
+main p
+{
+    /* On selectionne tout p à l'interieur d'un main, peu importe si il y d'autres balises les séparants */
+    background-color: lightcoral;
+}
+main > p
+{
+    /* On selectionne tout p directement dans un main sans balises les séparants */
+    background-color: olive;
+}
+/* ---------------- frère direct ou indirect ----------------- */
+strong ~ span
+{
+    /* Selectionne tous les spans qui se trouvent au même niveau qu'un strong */
+    background-color: yellowgreen;
+}
+strong + span
+{
+    /* selectionne tous les spans qui suivent directement un strong */
+    background-color: peachpuff;
+}
+/* ---------------- Les pseudo classes ----------------------- */
+/* Les pseudos classent s'écrivent de la façon suivante ":nomDelaPseudoClasse" */
+li:hover
+{
+    /* S'active uniquement au survol de mes li */
+    background-color: deeppink;
+}
+li:nth-of-type(3)
+{
+    /* Selectionne tout li étant le 3ème de son type
+        Existe aussi :nth-last-of-type() partant de la fin */
+    background-color: tomato;
+}
+li:nth-child(1)
+{
+    /* Selectionne tout li étant le premier enfant de son parent.
+        existe aussi :nth-last-child() partant de la fin */
+    background-color: black;
+    color: whitesmoke;
+}
+h1 a
+{
+    color: darkorange;
+}
+h1 a:visited
+{
+    /* tout lien dans un h1 ayant été visité */
+    color: red;
+}
+h1 a:focus
+{
+    /* tout lien dans un h1 ayant le focus */
+    color: cornsilk;
+}
+h1 a:active
+{
+    /* tout lien dans un h1 au moment de son activation */
+    color: cyan;
+}
+p span:not(:nth-of-type(2))
+{
+    /* :not() permet de selectionner des éléments à l'exception de certains, ici tout span qui n'est pas le second de son type */
+    font-size: 30px;
+}
+*:not(h1, a)
+{
+    /* * représente toute les balises html,
+    ici je selectionne tout ce qui n'est pas un h1 ou un a */
+    font-size: 20px;
+}
+/* ---------------- Les pseudos éléments -------------------*/
+/* Ils s'écrivent de la façon suivante ::nomDuPseudoElement */
+article p::first-letter
+{
+    /* Selectionne la première lettre  */
+    font-size: 50px;
+}
+main > p::first-line
+{
+    /* selectionne la première ligne des p */
+    font-weight: bold;
+}
+h1::before
+{
+    /* Ajoute un élément avant les h1 */
+    content: "c'est faux -->";
+    color: yellow;
+}
+h1::after
+{
+    /* Ajoute un élément après les h1 */
+    content: "<- il ment !";
+    color: darkgoldenrod;
+}
+/* ---------------- Classes, id, et attributs ---------------- */
+#MenuImportant
+{
+    /* Selectionne tout élément avec l'id "MenuImportant" */
+    font-size: 42px;
+    font-weight: bold;
+    color: red;
+}
+.peuImportant
+{
+    /* Selectionne tout élément avec la classe "peuImportant" */
+    font-size: 8px;
+    font-weight: lighter;
+    color: gainsboro;
+}
+a[target]
+{
+    /* Selectionne tout a ayant l'attribut "target" */
+    font-style: italic;
+}
+a[href*="amazon"]
+{
+    /* Selectionne tout a dont le href contient le mot "amazon"
+    Ce qui réfère au lien amazon.com mais aussi au lien wikipedia de l'amazonie */
+    font-family: monospace, arial, Impact;
+    color: black    ;
+}
+a[href^="https"]::before
+{
+    /* Selectionne tout a dont le href commence par "https" */
+    content: "✓";
+}
+a[href$=".fr"]
+{
+    /* Selectionne tout a dont le href termine par ".fr" */
+    background-color: blue;
+}
+
+article p, li:nth-child(2), header p
+{
+    /* On peut séparer plusieurs selecteurs css pour appliquer un même effet à chacun grâce à une virgule */
+    font-family: cursive;
+}
+:where(article, header) p
+{
+    /* ceci est équivalent à :
+    article p, header p{} */
+    color: darkorchid;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base de SCSS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Les bases de SASS et SCSS</h1>
+    </header>
+    <main>
+        <ul>
+            <li>
+                Pour installer SASS on utilisera :
+                <strong>npm install -g sass</strong>
+            </li>
+            <li>
+                La commande pour compiler du SASS est :
+                <strong>sass nomFichier.sass nomFichier.css</strong>
+            </li>
+            <li>
+                SASS et SCSS ont exactement les même fonctionnalités. Seul la syntaxe change.
+            </li>
+            <li>
+                Pour éviter de retaper la commande à chaque fois, on peut lui indiquer de surveiller un fichier avec :
+                <strong>sass nomFichier.scss nomFichier.css --watch</strong>
+            </li>
+            <li>
+                On peut aussi lui demander de surveiller tout un dossier avec:
+                <strong>sass nomDossierSCSS/:nomDossierCSS --watch</strong>
+            </li>
+            <li>
+                Vous pouvez indiquer à votre compilateur de minimifier votre css avec :
+                <strong>sass nomDossierSCSS/:nomDossierCSS --watch --style compressed</strong>
+            </li>
+        </ul>
+        <section class="sass">
+            <h2>
+                <span>
+                    SASS
+                </span>
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam temporibus iste nisi suscipit recusandae earum culpa libero officia hic. Fugiat alias error sint placeat corrupti atque temporibus dolorum voluptatem fugit!
+            </p>
+            <div class="menu">
+                <ul>
+                    <li class="truc1">
+                        MENU 1
+                    </li>
+                    <li class="truc2">
+                        MENU 2
+                    </li>
+                    <li class="truc3">
+                        MENU 3
+                    </li>
+                    <li class="truc4">
+                        MENU 4
+                    </li>
+                    <li class="truc5">
+                        MENU 5
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

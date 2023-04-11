@@ -1,0 +1,9 @@
+@import url("./css/default.css");
+@import url("./css/animation.css");
+@import url("./css/header.css");
+@import url("./css/navigation.css");
+@import url("./css/article.css");
+@import url("./css/footer.css");
+@import url("./css/desktop.css") screen and (min-width: 900px);
+@import url("./css/tablet.css") screen and (max-width: 899px);
+@import url("./css/mobile.css") screen and (min-width: 320px) and (max-width: 480px);

@@ -1,0 +1,33 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background: linear-gradient(90deg, rgb(107,11, 116), rgb(180, 25, 25));
+}
+.part1
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: white;
+    transform: translate(265%, 115%);
+}
+.part2
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: white;
+    transform: translate(235%, 50%);
+}
+.part3
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: white;
+    transform: translate(300%, -50%);
+}

@@ -1,0 +1,47 @@
+header.pageHeader
+{
+    background-color: aquamarine;
+    position: relative;
+    padding: var(--default-pading);
+}
+.pageHeader :where(.logo, h1.title).logo
+{
+    display: inline-block;
+}
+.pageHeader h1.title
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+.pageHeader form.search
+{
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+}
+.pageHeader form input[type="search"]
+{
+    height: 2rem;
+    border-radius: 10px;
+    padding: 0 1rem;
+}
+.pageHeader form input[type="submit"]
+{
+    height: 2rem;
+    aspect-ratio: 1/1;
+    font-size: 1rem;
+}
+.pageHeader h1
+{
+    animation-name: appearTitle;
+    animation-duration: 3s;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+}
+.pageHeader form input[type="submit"]:hover
+{
+    animation-name: rotate;
+    animation-duration: 1s;
+}

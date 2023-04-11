@@ -1,0 +1,98 @@
+*, ::before, ::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+menu
+{
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    transform: translate(-50%, -50%);
+    /* J'indique quelle propriété doit subir une transition (le mot clef "all" est possible) */
+    transition-property: left;
+    /* J'indique la durée de la transition */
+    transition-duration: 1s;
+    /* Je peux optionnellement ajouter un délai */
+    transition-delay: .2s;
+    /* 
+        Indique optionnellement le timing de la transition
+        On peut utiliser les mots clefs fourni ou alors la fonction "cubic-bezier" pour des timings plus complexes. 
+        On pourra par exemple avoir un départ lent, puis qui accélère.
+    */
+    transition-timing-function:cubic-bezier(.02,1.94,1,-0.5);
+}
+li
+{
+    margin: 1rem 0;
+    display: inline-block;
+}
+button
+{
+    font-size: 3rem;
+    aspect-ratio: 1/1;
+}
+input#burger
+{
+    display: none;
+}
+input#burger:checked ~ menu
+{
+    left: 50%;
+}
+li:nth-child(1) button
+{
+    background-color: chartreuse;
+    /* On peut préciser plusieurs propriétés séparés d'une virgule */
+    transition-property: background-color, transform;
+    /* On pourra alors faire de même avec les durées */
+    transition-duration: 1s, 2s;
+    /* Si une seule valeur est donnée, elle s'applique aux deux. */
+    transition-delay: 0.2s;
+    /* Avec la fonction steps, plutôt qu'une transition fluide, on a une transition en étape */
+    transition-timing-function: steps(5, jump-start);
+}
+li:nth-child(1) button:hover
+{
+    background-color: darkviolet;
+    transform: rotate(180deg);
+}
+li:nth-child(2) button
+{
+    /* 
+        On peut résumer ces 4 propriétés en une, en suivant l'ordre :
+            transition-property
+            transition-duration
+            transition-timing-function (optionelle)
+            transition-delay (optionnelle)
+    */
+    transition: border-radius 2s ease-in-out .4s ;
+}
+/* 
+    Si je met le hover sur le bouton, et que ma souris passe sur le coin du bouton, 
+    celui ci va changer de forme mais tout de suite revenir à sa forme originel car ma souris quitte le bouton lors du changement.
+    Pour éviter cela je met le hover sur le "li" qui l'encadre qui lui ne bouge pas. 
+*/
+li:nth-child(2):hover button
+{
+    border-radius: 50%;
+}
+li:nth-child(3) button:active
+{
+    box-shadow: 10px 50px 10px 50px red;
+    /* Si je met la transition, uniquement lorsque les propriétés changent (active, hover...) 
+    Alors la transition se fera que lors de l'activation, et non au retour à l'état normal. */
+    transition: all 1s;
+}
+li:nth-child(4) button
+{
+    /* On peut aussi selectionner plusieurs propriétés avec "transition"
+    Il nous suffit de séparer chaque liste de propriétés d'une virgule */
+    transition: transform 1s ease-in, color .5s;
+}
+li:nth-child(4):hover button
+{
+    transform: scale(0.5);
+    color: darkblue;
+}

@@ -1,0 +1,172 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    /* Je cache le scrolling */
+    overflow: hidden;
+}
+#exo
+{
+    /* j'active le scrolling sur ma div */
+    overflow-y: auto;
+    height: 100vh;
+    /* J'indique à mon scrolling qu'il doit se fixer sur les points d'accrochage du scrolling */
+    scroll-snap-type: y mandatory;
+}
+section
+{
+    height: 100%;
+    /* J'indique où se trouve le point d'accrochage. */
+    scroll-snap-align: center;
+    display: flex;
+}
+section:nth-of-type(even)
+{
+    background-color: lightslategray;
+}
+div:nth-child(1), header
+{
+    background-color: aqua;
+}
+div:nth-child(2), nav
+{
+    background-color: greenyellow;
+}
+div:nth-child(3), main
+{
+    background-color: red;
+}
+div:nth-child(4), footer
+{
+    background-color: plum;
+}
+div:nth-child(5)
+{
+    background-color: blue;
+}
+div:nth-child(6)
+{
+    background-color: maroon;
+}
+div:nth-child(7)
+{
+    background-color: goldenrod;
+}
+div:nth-child(8)
+{
+    background-color: lightsalmon;
+}
+div:nth-child(9)
+{
+    background-color: lightcoral;
+}
+/* Exercice 1 */
+#exo1
+{
+    flex-direction: row;
+}
+#exo1 div
+{
+    width: 12.5%;
+}
+@media screen and (max-width: 900px) 
+{
+    #exo1
+    {
+        flex-wrap: wrap;
+    }
+    #exo1 div
+    {
+        width: 25%;
+    }
+}
+@media screen and (max-width: 500px) 
+{
+    #exo1
+    {
+        justify-content: space-evenly;
+        gap: 8px 2%;
+        padding: 2px 0;
+    }
+    #exo1 div
+    {
+        width: 48%;
+    }
+
+}
+/* Exercice 2 */
+#exo2
+{
+    flex-wrap: wrap;
+}
+#exo2 div
+{
+    width: 25%;
+}
+#exo2 div:nth-child(5)
+{
+    width: 100%;
+}
+@media screen and (max-width: 900px) 
+{
+    #exo2 div
+    {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 500px) 
+{
+    #exo2 div
+    {
+        width: 100%;
+    }
+}
+/* Exercice 3 */
+#exo3
+{
+    flex-wrap: wrap;
+}
+header, footer
+{
+    width: 100%;
+    height: 20%;
+}
+nav, main
+{
+    height: 60%;
+}
+nav
+{
+    width: 20%;
+}
+main
+{
+    width: 80%;
+}
+@media screen and (max-width: 500px) 
+{
+    #exo3
+    {
+        flex-wrap: wrap;
+    }
+    main
+    {
+        height: 40%;
+    }
+    nav
+    {
+        height: 20%;
+        order: 1;
+    }
+    nav, main
+    {
+        width: 100%;
+    }
+    footer
+    {
+        order:1;
+    }
+}

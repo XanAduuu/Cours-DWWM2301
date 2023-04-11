@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les formulaires</title>
+</head>
+<body>
+    <form action="#" method="get">
+        <label for="prenom">Prénom :</label>
+        <input type="text" name="prenom" id="prenom" autofocus required>
+        <br>
+        <input type="email" name="email" placeholder="Votre Email">
+        <br>
+        <label for="birthday">Date de naissance :</label>
+        <input type="date" name="birthday" id="birthday" disabled>
+        <br>
+        <label for="color">Couleur favorite</label>
+        <input type="color" name="color" id="color">
+        <br>
+        <label for="password">Mot de passe :</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <input type="file" name="f" disabled>
+        <br>
+        <label for="commentaire">Un commentaire ?</label>
+        <textarea name="commentaire" id="commentaire" cols="30" rows="10" placeholder="commentaire">texte par défaut</textarea>
+        <br>
+        <input type="tel" value="+33" readonly>
+        <br>
+        <input type="number" name="age" placeholder="Votre age" min="0" max="100">
+        <br>
+        <hr>
+        <fieldset>
+            <legend>Quel catégories appréciez vous?</legend>
+            <input type="checkbox" name="aventure" id="aventure" checked>
+            <label for="aventure">aventure</label>
+            <input type="checkbox" name="romantique" id="romantique">
+            <label for="romantique">romantique</label>
+            <input type="checkbox" name="horreur" id="horreur">
+            <label for="horreur">horreur</label>
+        </fieldset>
+        <fieldset>
+            <legend>Choisi ton langage préféré :</legend>
+            <input type="radio" name="langage" id="html">
+            <label for="html">html</label>
+            <input type="radio" name="langage" id="css">
+            <label for="css">css</label>
+            <input type="radio" name="langage" id="javascript">
+            <label for="javascript">javascript</label>
+        </fieldset>
+        <select name="repas" id="repas" multiple>
+            <option value="pizza">Vive la pizza !</option>
+            <option value="pasta">pasta aldente</option>
+            <option value="burger">Burger bien gras</option>
+        </select>
+        <br>
+        <input type="submit" value="Envoyer">
+        <input type="button" value="Je ne sert à rien">
+        <!-- remplaçable par  -->
+        <button type="submit">Envoyer</button>
+        <button title="ne me clique pas!">Je ne sert à rien</button>
+        <!-- Non visible : -->
+        <input type="hidden" name="secret" value="Message secret">
+    </form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+nav.sideNavigation
+{
+    background-color: hotpink;
+    position: relative;
+    padding: var(--default-pading) 20px;
+    float: left;
+    width: 20%;
+    height: 180vh;
+    z-index: 1;
+}
+.sideNavigation menu
+{
+    position: sticky;
+    top: 1rem;
+    width: 80%;
+    margin: auto;
+}
+.sideNavigation menu li
+{
+    line-height: 1.3em;
+    list-style: url(chevron-right-solid.svg);
+}
+.sideNavigation input[type="checkbox"]
+{
+    display: none;
+}

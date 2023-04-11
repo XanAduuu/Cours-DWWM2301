@@ -1,0 +1,65 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+}
+.logo img
+{
+    width: 100px;
+    height: 140px;
+}
+.pageMain
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+}
+nav.sideNavigation
+{
+    height: auto;
+    width: 100%;
+}
+section#articles
+{
+    width: 100%;
+}
+.sideNavigation menu
+{
+    position: unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.sideNavigation menu li
+{
+    display: inline-block;
+}
+.pageFooter
+{
+    display: flex;
+    flex-direction: column;
+}
+.pageFooter .left
+{
+    width: 100%;
+}
+.externalMenu
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.right form fieldset
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+.pageFooter .right button[type="submit"]
+{
+    position: static;
+}
+.pageFooter .right .formGroup:nth-of-type(2)
+{
+    margin: 0;
+}

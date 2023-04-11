@@ -1,0 +1,154 @@
+@use "liste";
+/* 
+    Pour importer un partial, je vais utiliser @use suivi du nom du partial sans "_" ni extension.
+    @use doit être placé avant toute autre règles.
+*/
+h1
+{
+    color: green;
+}
+h2
+{
+    color: yellow;
+}
+// ---------- NESTING (Nidification) ---------------
+section.sass
+{
+    background-color: aquamarine;
+    /* 
+        Le nesting permet d'inclure un selecteur dans un autre.
+        Ici je ne selectionne que les h2 se trouvant dans ma section.
+    */
+    h2
+    {
+        background-color: brown;
+        span
+        {
+            font-style: italic;
+        }
+        /* & fait référence au selecteur parent, ici on est dans h2 donc il vaut h2 */
+        &:hover
+        {
+            transform: scale(1.5);
+        }
+    }
+}
+// ---------- Variable ------------
+/* 
+    Les variables SCSS sont un peu plus simple d'utilisation et n'apparaissent pas en CSS
+    Elles doivent commencer par un "$"
+*/
+$colorMain: violet;
+.sass p
+{
+    background-color: $colorMain;
+}
+//------------- Extends ---------------
+/* 
+    Un extend permet de créer un morceau de CSS, réutilisable à plusieurs endroits.
+    un extend commence par un "%" suivi de son nom
+*/
+%flexCenter
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.truc1
+{
+    background-color: lightgreen;
+}
+/* 
+    Je peux réutiliser ce morceau de code en utilisant 
+    "@extend" suivi du nom de l'extend que je souhaite utiliser
+*/
+header
+{
+    @extend %flexCenter;
+    @extend .truc1;
+}
+main ul
+{
+    flex-direction: column;
+    @extend %flexCenter;
+}
+// ------------ MIXIN -------------
+/* 
+    Pareillement aux @extends, les @mixin permettent de créer des morceaux de code réutilisable.
+    La principale différence, étant qu'on pourra leur donner des paramètres.
+*/
+@mixin absol($top:50%, $left: 50%, $tr1: -50%, $tr2: -50%)
+{
+    /* 
+        On peut donner entre les parenthèses de notre mixin des variables que l'on nommera "paramètre"
+        Ces paramètres peuvent être aussi nombreux que souhaité, ils seront alors séparés d'une virgule.
+
+        à partir du moment où on a donné un paramètre, il faudra que lors de l'appel de la mixin, la valeur de ce paramètre soit donnée.
+
+        Cela est vrai à moins que l'on ai donné une valeur par défaut au paramètre.
+        pour cela on fera suivre ce paramètre de ":" et de sa valeur par défaut.
+    */
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate($tr1, $tr2);
+}
+.truc2
+{
+    @include absol(20%, 80%);
+}
+.truc3
+{
+    @include absol($tr2:600%);
+}
+// -------------- Fonctions --------------
+/* 
+    Une fonction va prendre une ou plusieurs valeurs en paramètre.
+    Travailler avec ou les transformer avant de rendre une nouvelle valeur.
+
+    Ici je prend une couleur
+*/
+@function compLight($color)
+{
+    // Je récupère sa couleur complémentaire
+    $comp: complement($color);
+    // Je l'éclairci
+    $light: lighten($comp, 5%);
+    // Et rend cette nouvelle couleur
+    @return $light;
+}
+.truc4
+{
+    background-color: red;
+    color: compLight(red);
+}
+// ---------------- Condition -------------------
+@mixin radius($w, $h)
+{
+    width: $w;
+    height: $h;
+    /* 
+        On peut conditionner certaines règles.
+        Par exemple ici, je lui demande "est ce que $w à la même valeur que $h" 
+        Si oui, lui donner un border radius de 50%
+        Si non, lui en donner un de 5px;
+    */
+    @if $w == $h
+    {
+        border-radius: 50%;
+    }
+    @else
+    {
+        border-radius: 5px;
+    }
+}
+.truc1
+{
+    background-color: chartreuse;
+    @include radius(200px, 200px);
+}
+.truc5
+{
+    background-color: darkred;
+    @include radius(230px, 100px);
+}
