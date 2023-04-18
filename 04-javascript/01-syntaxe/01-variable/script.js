@@ -279,3 +279,83 @@ console.log(a7);
 console.log(a7);
 
 // ? ------------- les objets -------------------------
+/* 
+    Les objets ressemblent aux tableaux mais utilise {} au lieu de [].
+    Au lieu d'être indexé numériquement, on utilisera des noms de propriétés.
+    ici par exemple, la propriété "nom" vaut "Dupont".
+*/
+let o1 = {nom: "Dupont", age: 45, loisir: ["bowling", "mahjong"]};
+console.log(o1);
+// Pour accèder à une propriété de mon objet, il me suffit de faire suivre sa variable d'un "." puis du nom de la propriété.
+console.log(o1.nom, o1.age, o1.loisir);
+// Je peux aussi utiliser la même notation que pour les tableaux :
+console.log(o1["nom"], o1["age"], o1["loisir"]);
+
+console.log(o1.loisir[0], o1["loisir"][0]);
+
+let o2 = {vegetal: {legume: {haricot: {couleur: "vert"}}}};
+// On peut avoir autant d'objet inseré dans d'autres objets que l'on souhaite.
+console.log(o2.vegetal.legume.haricot.couleur);
+
+// Comme pour les tableaux, on ne peut le copier aussi simplement que cela:
+let o3 = o1;
+o3.signe = "Balance";
+console.log(o1, o3);
+// Il nous faudra là aussi utiliser le spread operator.
+let o4 = {...o1};
+o4.signe = "Scorpion";
+console.log(o1, o4);
+
+// On peut transformer un tableau en objet :
+console.log({...a1});
+// Mais on ne peut pas faire l'inverse aussi facilement.
+
+o4.yeux = "Vert";
+/* 
+    Dans le cas d'une fusion d'objet, les propriétés uniques sont ajouté mais dans celles qui sont en commun, 
+    c'est la valeur qui arrive en dernière qui est gardé.
+*/
+let o5 = {...o1, ...o4};
+console.log(o5);
+
+// ? ------------- Les Booleans ------------------------
+// Les booleans n'acceptent que deux valeurs, soit "true", soit "false".
+let b1 = true, b2 = false;
+
+// Mais il existe bien des manières de les faire apparaître :
+// "Plus petit" ou "plus grand" que
+console.log("1 < 2 :", 1 < 2 );
+console.log("1 > 2 :", 1 > 2 );
+// "Plus petit ou égale" ou "plus grand ou égale"
+console.log("1 <= 2 :", 1 <= 2 );
+console.log("1 >= 2 :", 1 >= 2 );
+// Pour vérifier si une valeur est égale à, on utilisera 2 fois "="
+console.log('1 == "1"', 1 == "1" );
+// Avec 3 "=" il va comparer si le type est le même aussi
+console.log('1 === "1"', 1 === "1" );
+// Avec un "!" on va vérifier si cela est différent.
+console.log('1 != "1"', 1 != "1" );
+console.log('1 !== "1"', 1 !== "1" );
+
+// On peut inverser un résultat en le faisant précéder d'un "!"
+console.log("b1 :", b1, "b2 :", b2);
+console.log("!b1 :", !b1, "!b2 :", !b2);
+
+// On peut aussi vérifier plusieurs cas à la fois avec "et" et "ou" qui sont représentés par "&&" et "||"
+console.log(true && true, true && false, false && true, false && false);
+console.log(true || true, true || false, false || true, false || false);
+
+// Il est aussi possible de regrouper certains résultats entre parenthèse.
+console.log(
+    true || (false && false),
+    (true || false) && false
+);
+
+// On peut "court-circuiter" un code, c'est à dire empêcher l'execution d'une partie du code avec && et ||
+let nb = 0;
+// dans le cas d'un "&&" si le premier est faux, le second ne sera pas vérifié
+console.log(true && ++nb, nb);
+console.log(false && ++nb, nb);
+// Dans le cas d'un "||" si le premier est true, le second ne sera pas vérifié.
+console.log(true || ++nb, nb);
+console.log(false || ++nb, nb);
