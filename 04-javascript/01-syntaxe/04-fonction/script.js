@@ -107,3 +107,98 @@ function goodBye(nom1, nom2 = "les autres")
 }
 goodBye("Kevin");
 goodBye("Kevin", "Alan");
+
+// console.log(1,2,4,5,23,234,43,21);
+/* 
+    Parfois on a besoin qu'une fonction prenne un nombre infini de paramètre.
+        (comme le cas du console.log())
+    Pour cela, il suffit que le dernier paramètre de la fonction soit précédé du rest operator "..."
+        Cela va créer un tableau contenant tous les paramètres supplémentaires.
+*/
+function goodMorning(...noms)
+{
+    // console.log(noms);
+    // toString transforme un tableau en string
+    console.log("Good Morning "+noms.toString());
+    // join fait de même mais en changeant le séparateur.
+    console.log("Good Morning "+noms.join(" et "));
+}
+goodMorning("Pierre", "Paul", "Jacques", "Karl");
+
+// ? ---- Mettre fin à une fonction, renvoyer une information ----
+
+/* 
+    On peut parfois avoir besoin de mettre fin à une fonction avant la fin de celle ci.
+    Ou bien alors de retourner une information que l'on pourra utiliser ailleurs.
+    Ces deux cas utilisent le même mot clef, qui est "return";
+*/
+function insulte(nom)
+{
+    if(nom == undefined)
+    {
+        console.error("Donne moi un nom !");
+        // Placer un return seul, mettra fin à la fonction sans autre effet
+        return;
+        // console.log("Je ne m'affiche pas");
+    }
+    // Si le return est suivi d'une valeur, la fonction prendra fin en retournant cette valeur.
+    return nom + " Le Poltron !";
+}
+insulte();
+// La valeur retourné est ensuite utilisable dans une variable ou une autre fonction.
+let newName = insulte("Bob");
+console.log(newName);
+console.log(insulte("Bil"));
+/* 
+    Les fonctions fléchées avec une seule instruction (sans accolade)
+    ont un "return" implicite.
+    C'est à dire que cette seule instruction est retourné même si le mot clef return n'est pas écrit
+*/
+const add = (a,b)=>a+b;
+console.log(add(4,8));
+
+// ? ----------------- Fonction callback --------------------
+
+/* 
+    Certaines fonctions, prennent en paramètre, non pas un string, un number ou autre, mais une autre fonction.
+    C'est ce qu'on appelle, une fonction callback.
+
+    Un exemple que l'on a déjà pu voir, c'est "forEach"
+
+    Lorsque l'on met une fonction en callback d'une autre fonction, 
+    on se contente d'écrire son nom, sans les parenthèses.
+*/
+let pr = ["Alice", "Ariel", "Mulan", "Belle"];
+pr.forEach(bonsoir);
+// On peut aussi utiliser une fonction anonyme
+pr.forEach(function(princesse)
+{
+    console.log("Bienvenue "+ princesse);
+});
+// Ou une fonction fléchée.
+pr.forEach(princesse=>console.log("Bonjour Bonjour "+ princesse));
+/* 
+    On peut utiliser des paramètres de fonction comme étant eux même des fonctions.
+    C'est ainsi que l'on crée des fonctions callback.
+*/
+function compliment(salutation, nom)
+{
+    salutation(nom+" le magnifique");
+}
+// Ici "salutation" devient égale à la fonction "bonsoir"
+compliment(bonsoir, "Greg");
+// Là "salutation" devient égale à ma fonction fléchée.
+compliment(nom=>console.log("Guttentag "+ nom), "Hanz");
+
+// ? --------------- fonction récurcive ---------------------
+/**
+ * Une fonction récurcive qui s'appelle elle même pour créer un décompte.
+ * @param {number} x nombre de départ
+ */
+function décompte(x)
+{
+    console.log(x--);
+    if(x < 0)return;
+    décompte(x);
+}
+décompte(5);
