@@ -63,53 +63,86 @@ form.addEventListener("submit", function(event){
 
 // Exercice 4 :
 
-const password = document.getElementById("pass");
-console.log(password);
+let password = document.getElementById("pass");
+let strengthBar = document.getElementsByClassName("progress")
+let display = document.getElementsByClassName("bar")
 
-password.addEventListener('keyup', function() {
-
-    const strong = password.value;
-
-    if (strong.length === 0) {
-        document.getElementsByClassName("bar");
-        document.getElementsByClassName("progress").value = "0";
-        return;
-
-    }
-
-    // Check progress
-    var prog = [/[$@$!%*#?&]/, /[A-Z]/, /[0-9]/, /[a-z]/]
-        .reduce((memo, test) => memo + test.test(strong), 0);
-
-    // Length must be at least 8 chars
-    if (prog > 2 && strong.length > 7) {
-        prog++;
-    }
-
-    // Display it
-    var progress = "bar";
-    var strength = "progress";
-    switch (prog) {
-        case 0:
-        case 1:
-        case 2:
-            strength = "25%";
-            progress = "25";
-            break;
-        case 3:
-            strength = "50%";
-            progress = "50";
-            break;
-        case 4:
-            strength = "75%";
-            progress = "75";
-            break;
-        case 5:
-            strength = "100% - Password strength is good";
-            progress = "100";
-            break;
-    }
-    document.getElementsByClassName("bar").innerHTML = strength;
-    document.getElementsByClassName("progress").value = progress;
-
+password.addEventListener("keyup", function() {
+    strengthChecker(password.value);
 });
+
+let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})')
+let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))')
+
+function strengthChecker(password) {
+    if (strongPassword.test(password)) {
+        strengthBar.style.backgroundColor = "green";
+        strengthBar.textContent = 'Strong';
+    } else if (mediumPassword.test(password)) {
+        strengthBar.style.backgroundColor = 'blue';
+        strengthBar.textContent = 'Medium';
+    } else {
+        strengthBar.style.backgroundColor = 'red';
+        strengthBar.textContent = 'Weak';
+    }
+}
+
+
+/**
+ * var code = document.getElementById("password");
+
+var strengthbar = document.getElementById("meter");
+var display = document.getElementsByClassName("textbox")[0];
+
+code.addEventListener("keyup", function() {
+  checkpassword(code.value);
+});
+
+
+function checkpassword(password) {
+  var strength = 0;
+  if (password.match(/[a-z]+/)) {
+    strength += 1;
+  }
+  if (password.match(/[A-Z]+/)) {
+    strength += 1;
+  }
+  if (password.match(/[0-9]+/)) {
+    strength += 1;
+  }
+  if (password.match(/[$@#&!]+/)) {
+    strength += 1;
+
+  }
+
+  if (password.length < 6) {
+    display.innerHTML = "minimum number of characters is 6";
+  }
+
+  if (password.length > 12) {
+    display.innerHTML = "maximum number of characters is 12";
+  }
+
+  switch (strength) {
+    case 0:
+      strengthbar.value = 0;
+      break;
+
+    case 1:
+      strengthbar.value = 25;
+      break;
+
+    case 2:
+      strengthbar.value = 50;
+      break;
+
+    case 3:
+      strengthbar.value = 75;
+      break;
+
+    case 4:
+      strengthbar.value = 100;
+      break;
+  }
+}
+ */
