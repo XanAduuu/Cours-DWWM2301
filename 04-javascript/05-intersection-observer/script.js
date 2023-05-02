@@ -2,7 +2,25 @@
 
 const   indicator = document.querySelector('.scroll-indicator'),
         main = document.querySelector("main"),
-        options = {},
+        options = {/**
+        * l'option root permet de changer le scrolling observé.
+        *  par défaut c'est celui du document, mais si on a ajouté un scrolling sur
+        *  un élément html, on pourrait faire nos observation par rapport à celui ci
+        */
+       // root: main
+       /**
+        * rootMargin permet d'étendre ou réduire la zone de détection.
+        * avec un nombre positif, la détection sera hors de l'écran.
+        * avec un nombre négatif, elle se fera dans une zone réduite de l'écran.
+        * Que ce soit pour l'entré ou la sortie de l'élément.
+        */
+       // rootMargin: "200px"
+       /**
+        * threshold indique via un chiffre entre 0 et 1, combien de pourcentage
+        * de l'élément doit être visible pour lancer l'évènement.
+        */
+       // threshold: 0.15
+   },
         observer = new IntersectionObserver(setIndicator, options);
 /* 
     L'intersection observer va nous permettre d'observer certains éléments HTML, 
