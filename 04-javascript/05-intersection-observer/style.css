@@ -18,9 +18,11 @@ main p
     line-height: 1.4;
     opacity: 0;
     transition: opacity .3s linear, transform .5s ease-out;
-    transform: translateX(-50%);
-    display: inline-block;
-    width: 30%;
+    /* Exemple cours : */
+    /*display: inline-block;
+    width: 30%; */
+    /* Exercice : */
+    /* transform: translateX(-50%); */
 }
 main p:nth-child(even)
 {
