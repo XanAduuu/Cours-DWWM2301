@@ -41,7 +41,6 @@ async function exemple()
         {
             console.error(err);
         }
-        
     }
 }
 burger();
