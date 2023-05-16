@@ -1,9 +1,9 @@
 INSERT INTO messages (content, UserId) 
 VALUES 
-('Bonjour', (SELECT id FROM users WHERE username = "Cécilius")), 
-('mange du pain', (SELECT id FROM users WHERE username = "Cécilius")), 
-('Pizza time', (SELECT id FROM users WHERE username = "Cécilius")), 
-('salade niçoise ou rien', (SELECT id FROM users WHERE username = "Cécilius")), 
+('Bonjour', (SELECT id FROM users WHERE username = "Basile")), 
+('mange du pain', (SELECT id FROM users WHERE username = "Basile")), 
+('Pizza time', (SELECT id FROM users WHERE username = "Basile")), 
+('salade niçoise ou rien', (SELECT id FROM users WHERE username = "Basile")), 
 ('Vive les regex', (SELECT id FROM users WHERE username = "Elzemond")), 
 ('JS logic', (SELECT id FROM users WHERE username = "Elzemond")), 
 ('Coucou', (SELECT id FROM users WHERE username = "Elzemond")), 
