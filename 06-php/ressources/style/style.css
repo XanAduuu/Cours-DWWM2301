@@ -56,3 +56,12 @@ p{
     align-items: center;
     font-size: clamp(2rem, 20vh, 3rem);
 }
+/* Formulaire : */
+.error
+{
+    color: red;
+}
+.formError
+{
+    border-color: red;
+}
