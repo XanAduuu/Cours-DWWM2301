@@ -73,6 +73,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["meal"]))
             $error["drink"] = "Cette boisson n'est pas dans la liste.";
         }
     }
+    if(empty($_POST["cgu"]))
+    {
+        $error["cgu"] = "Veuillez accepter nos conditions d'utilisation";
+    }
+    elseif($_POST["cgu"] != "cgu")
+    {
+        $error["cgu"] = "Ne modifiez pas notre formulaire!";
+    }
 }
 /**
  * Nettoie le string donnée en paramètre.
@@ -98,6 +106,7 @@ require "../ressources/template/_header.php";
         type="text" 
         placeholder="Entrez un nom" 
         name="username"
+        value="<?php echo $username ?>"
         class="<?php echo (empty($error["username"])?"":"formError") ?>">
     <span class="error"><?php echo $error["username"]??""?></span>
     <br>
@@ -111,7 +120,8 @@ require "../ressources/template/_header.php";
             <input 
                 type="radio" 
                 name="food" 
-                id="<?php echo $k ?>" 
+                id="<?php echo $k ?>"
+                <?php echo $food === $k ? "checked":"" ?>
                 value="<?php echo $k ?>"> 
             <label for="<?php echo $k ?>"><?php echo $f ?></label>
             <br>
@@ -126,14 +136,21 @@ require "../ressources/template/_header.php";
         class="<?php echo (empty($error["drink"])?"":"formError") ?>">
         <!-- Je parcours la liste des boissons pour afficher une option par élément du tableau -->
         <?php foreach($drinkList as $k => $d): ?>
-            <option value="<?php echo $k ?>">
+            <option 
+                <?php echo $drink===$k? "selected":"" ?>
+                value="<?php echo $k ?>">
                 <?php echo $d ?>
             </option>
         <?php endforeach; ?>
     </select>
     <span class="error"><?php echo $error["drink"]??""?></span>
     <br>
-    
+    <!-- Ajout d'une case à cocher (style CGU) -->
+    <input type="checkbox" name="cgu" id="cgu" value="cgu">
+    <label for="cgu">J'accepte que mes données ne m'appartiennent plus.</label>
+    <span class="error"><?php echo $error["cgu"]??"" ?></span>
+    <br>
+    <!-- fin ajout -->
     <input type="submit" value="Envoyer" name="meal">
 </form>
 
