@@ -37,6 +37,8 @@
     je conseille l'utilisation d'un outil professionnel.
     (captcha google ou autre...)
 */
+# Une fois le fichier créé, nous pouvons l'intégrer à nos formulaire.
+require "../ressources/service/_csrf.php";
 $error = $password = $clearPass = "";
 
 if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['hash']))
@@ -76,6 +78,10 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['hash']))
         */
         $password = password_hash($password, PASSWORD_DEFAULT);
     }
+    # Début vérification CSRF
+    if(!isCSRFValid())
+        $error = "La méthode utilisée n'est pas permise !";
+    # Fin vérification CSRF
 }
 $title = "Sécurité";
 require "../ressources/template/_header.php";
@@ -84,6 +90,9 @@ require "../ressources/template/_header.php";
 <form action="" method="post">
     <input type="text" name="password" placeholder="Mot de passe à hacher :" required>
     <br>
+    <!-- Début Protection CSRF -->
+    <?php setCSRF(); ?>
+    <!-- Fin protection CSRF -->
     <input type="submit" value="Valider" name="hash">
     <span class="error"><?php echo $error??"" ?></span>
 </form>
