@@ -82,6 +82,10 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['hash']))
     if(!isCSRFValid())
         $error = "La méthode utilisée n'est pas permise !";
     # Fin vérification CSRF
+    # Début vérification Captcha 
+    if(!isset($_POST["captcha"], $_SESSION["captchaStr"]) || $_SESSION["captchaStr"] !== $_POST["captcha"])
+        $error = "Captcha Incorrecte !";
+    # Fin vérification captcha
 }
 $title = "Sécurité";
 require "../ressources/template/_header.php";
@@ -93,6 +97,15 @@ require "../ressources/template/_header.php";
     <!-- Début Protection CSRF -->
     <?php setCSRF(); ?>
     <!-- Fin protection CSRF -->
+    <!-- Début captcha -->
+    <div>
+        <label for="captcha">Veuillez recopier le texte ci-dessous :</label>
+        <br>
+        <img src="../ressources/service/_captcha.php" alt="Captcha">
+        <br>
+        <input type="text" name="captcha" id="captcha" pattern="[A-Z0-9]{6}">
+    </div>
+    <!-- Fin captcha -->
     <input type="submit" value="Valider" name="hash">
     <span class="error"><?php echo $error??"" ?></span>
 </form>
