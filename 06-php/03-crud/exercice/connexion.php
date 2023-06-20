@@ -39,6 +39,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login']))
                 $_SESSION["logged"] = true;
 
                 $_SESSION["username"] = $user["username"];
+                $_SESSION["idUser"] = $user["idUser"];
 
                 $_SESSION["expire"] = time()+60*60;
                 header("Location: ../02-read.php");

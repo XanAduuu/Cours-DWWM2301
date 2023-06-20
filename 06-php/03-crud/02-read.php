@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require "../ressources/service/_pdo.php";
     $pdo = connexionPDO();
     /* 
@@ -32,7 +33,22 @@
             <tr>
                 <td><?php echo $row["idUser"] ?></td>
                 <td><?php echo $row["username"] ?></td>
-                <td></td>
+                <td>
+                    <!-- 
+                        On ajoute aux liens ci-dessous les id correspondant à chaque utilisateurs.
+                        Cela nous permettra de personnaliser chaque page à l'utilisateur concerné. 
+                    -->
+                    <a href="./exercice/blog/read.php?id=<?php echo $row["idUser"]  ?>">Voir</a>
+                    <!-- 
+                        Les liens de mise à jour et de suppression devraient être visibles qu'à l'utilisateur connecté
+                    -->
+                    <?php if(isset($_SESSION["idUser"]) && ($_SESSION["idUser"]) == $row["idUser"]): ?>
+                        &nbsp;|&nbsp;
+                        <a href="03-update.php?id=<?php echo $row["idUser"]  ?>">Mettre à jour</a>
+                        &nbsp;|&nbsp;
+                        <a href="04-delete.php?id=<?php echo $row["idUser"]  ?>">Supprimer</a>
+                    <?php endif; ?>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
