@@ -42,38 +42,38 @@ function toggleContactModal()
  */
 function checkEmail()
 {
-    if(this.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/))
-    {
-        this.style.backgroundColor = "";
-        this.setCustomValidity("");
-    }
-    else
-    {
-        this.style.backgroundColor = "rgb(255,0,0)";
-        this.setCustomValidity("Ceci n'est pas un email valide.");
-    }
+    // if(this.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/))
+    // {
+    //     this.style.backgroundColor = "";
+    //     this.setCustomValidity("");
+    // }
+    // else
+    // {
+    //     this.style.backgroundColor = "rgb(255,0,0)";
+    //     this.setCustomValidity("Ceci n'est pas un email valide.");
+    // }
 }
 /**
  * Vérifie si le contenu est valide.
  */
 function checkContent()
 {
-    if(this.value.length > 10)
-    {
-        this.style.backgroundColor = ""
-        this.setCustomValidity("");
-    }
-    else
-    {
-        this.style.backgroundColor = "rgb(255,0,0)"
-        this.setCustomValidity("Veuillez entrer au moins 10 caractères");
-    }
+    // if(this.value.length > 10)
+    // {
+    //     this.style.backgroundColor = ""
+    //     this.setCustomValidity("");
+    // }
+    // else
+    // {
+    //     this.style.backgroundColor = "rgb(255,0,0)"
+    //     this.setCustomValidity("Veuillez entrer au moins 10 caractères");
+    // }
 }
 function sendForm(e)
 {
-    e.preventDefault();
+    // e.preventDefault();
     alert("Votre message a bien été envoyé.");
     toggleContactModal();
-    inputEmail.value = "";
-    textareaContent.value = "";
+    // inputEmail.value = "";
+    // textareaContent.value = "";
 }
