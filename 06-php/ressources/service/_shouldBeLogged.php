@@ -38,4 +38,28 @@ function shouldBeLogged(bool $logged = true, string $redirect = "/"): void
         }
     }
 }
+/**
+ * Redirige l'utilisateur si il ne correspond pas à l'id fourni en GET ou en POST.
+ *
+ * @param string $redirect
+ * @param string $index
+ * @param string $session
+ * @return string
+ */
+function isSelectedUser(string $redirect="/", string $index = "id", string $session="idUser"): string
+{
+    // On cherche l'id en GET, sinon on le cherche en POST, sinon on met "false"
+    $selectedId = $_GET[$index]?? $_POST[$index]?? false;
+    /* 
+        Je vérifie si je n'ai pas d'id en session
+        ou si il est différent de l'utilisateur selectionné
+    */
+    if(!isset($_SESSION[$session]) || $_SESSION[$session] != $selectedId)
+    {
+        // Si l'utilisateur ne correspond pas, on le redirige
+        header("Location: $redirect");
+        exit;
+    }
+    return $selectedId;
+}
 ?>

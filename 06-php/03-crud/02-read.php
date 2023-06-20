@@ -16,7 +16,19 @@
     
     $title = "CRUD - Read";
     require "../ressources/template/_header.php";
+    // Si il existe, je récupère mon message flash et le retire de la session.
+    if(isset($_SESSION["flash"]))
+    {
+        $flash = $_SESSION["flash"];
+        unset($_SESSION["flash"]);
+    }
+    // Si j'ai un message flash, je l'affiche
+    if(isset($flash)):
 ?>
+<div class="flash">
+    <?php echo $flash ?>
+</div>
+<?php endif; ?>
 <h2>Liste des Utilisateurs</h2>
 <!-- Si on a trouvé des utilisateurs -->
 <?php if($users): ?>
