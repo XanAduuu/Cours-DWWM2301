@@ -10,7 +10,7 @@
 */
 // connexion :
 $pdo = new PDO(
-    "mysql:host=localhost;port=3306;dbname=biere;charset=utf8mb4", 
+    "mysql:host=localhost;port=3306;dbname=bieres;charset=utf8mb4", 
     "root", 
     "", 
     [
@@ -39,7 +39,7 @@ echo "<pre>" .print_r($sql->fetch(), 1) ."</pre><hr>";
     On va avoir un problème si on execute un paramètre avec "LIMIT"
     Ce dernier n'accepte que des chiffres et execute transforme notre chiffre en string.
 
-    Une autre façon de faire est de lier les paramètres est d'utiliser les méthodes :
+    Une autre façon de faire est de lier les paramètres et d'utiliser les méthodes :
         * bindValue() et bindParam()
     Elles ont l'avantage de pouvoir accepter plus de type sous la forme de constante :
         - PDO::PARAM_NULL
