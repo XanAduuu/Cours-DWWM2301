@@ -19,8 +19,32 @@
 
             // On envoi les données :
             $pdo = connexionPDO();
-            $sql = $pdo->prepare("INSERT INTO messages(message, idUser) VALUES (:m, :id)");
+            # Partie 1 uniquement :
+            // $sql = $pdo->prepare("INSERT INTO messages(message, idUser) VALUES (:m, :id)");
+            # Fin partie 1
 
+            # Partie 2 uniquement :
+            if(empty($_POST["categorie"]))
+            {
+                $sql = $pdo->prepare("INSERT INTO messages(message, idUser) VALUES (:m, :id)");
+            }
+            else
+            {
+                $sql = $pdo->prepare("SELECT * FROM categories WHERE idCat = ?");
+                $sql->execute([(int)$_POST["categorie"]]);
+                $cat = $sql->fetch();
+                if($cat)
+                {
+                    $sql = $pdo->prepare("INSERT INTO messages(message, idCat, idUser) VALUES (:m, :cat, :id)");
+                    $sql->bindValue("cat", $cat["idCat"]);
+                }
+                else
+                {
+                    $_SESSION["flash"] = "Cette catégorie n'existe pas";
+                    goto redirect;
+                }
+            }
+            # Fin partie 2
             $sql->bindValue("m", $message);
             $sql->bindValue("id", $_SESSION["idUser"], PDO::PARAM_INT);
             $sql->execute();
@@ -28,6 +52,9 @@
             $_SESSION["flash"] = "Message envoyé";
         }
     }
+    # Partie 2 uniquement :
+    redirect:
+    # fin partie 2;
     // On redirige l'utilisateur vers son blog
     header("Location: ./read.php?id=".$_SESSION["idUser"]);
     die;
