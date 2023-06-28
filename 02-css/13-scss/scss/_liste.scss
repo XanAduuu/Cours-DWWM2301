@@ -1,0 +1,43 @@
+/* 
+    Un fichier commençant par un "_" est dit "partial" 
+    C'est à dire que c'est un fichier qui a pour but d'être importé dans un autre.
+    Il ne sera pas compilé par SASS.
+*/
+// les "..." après le paramètre indique que je peux ajouter un nombre infini de paramètre, ils seront tous rangé dans la variable.
+@mixin liste($li...)
+{
+    // @debug n'apportera rien en CSS, il permet juste d'afficher quelque chose dans le terminal.
+    // @debug $li;
+    /* 
+        @for permet de répéter quelque chose un certain nombre de fois.
+        $i va prendre à chacune de ces itérations, une valeur différente.
+        avec "from" je lui indique sa valeur de départ, ici "0"
+        Puis avec "to" sa valeur d'arrivé
+
+        La fonction "lenght" va m'indiquer le nombre de paramètre dans la variable donnée en paramètre.
+    */
+    @for $i from 0 to length($li)
+    {
+        // @debug $i;
+        // #{} permet d'afficher quelque chose dans mon css.
+        /* 
+            nth() permet la selection d'un élément dans ma variable.
+            Ici à chaque boucle j'utilise donc les différents selecteurs que j'ai dans mon paramètre $li
+
+            la première itération affichera .truc1{}
+            La seconde itération affichera .truc2{}
+            et ainsi de suite
+        */
+        #{nth($li, $i+1)}
+        {
+            font-size: 30px + $i*10;
+        }
+    }
+    @warn "Mangez 5 fruits et légumes par jour";
+    // @error "Chaussette !";
+}
+ul
+{
+    background-color: goldenrod;
+    @include liste(".truc1", ".truc2", ".truc3", ".truc4", ".truc5");
+}

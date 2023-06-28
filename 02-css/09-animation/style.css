@@ -1,0 +1,107 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    height: 100vh;
+}
+.sky
+{
+    height: 100%;
+    background: linear-gradient(to right, #904E95, #E96443);
+}
+.cloud
+{
+    position: absolute;
+    top: 50%;
+    /* left: 50%; rentre en conflit avec le "right" de l'animation*/
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    /* Je selectionne la keyframe à utiliser pour l'animation */
+    animation-name: cloudMove;
+    /* Je lui indique en combien de seconde doit être faite l'animation. */
+    animation-duration: 5s;
+    /* Ceci est le minimum pour faire fonctionner l'animation, mais on peut lui ajouter d'autres options : */
+    /* Par défaut, l'élément revient à sa position d'origine une fois l'animation terminé.
+    forwards permet d'indiquer à l'élément de rester sur la dernière étape de l'animation */
+    animation-fill-mode: forwards;
+    /* Permet d'indiquer le sens dans lequel l'animation est jouée */
+    animation-direction: normal;
+    /* Le nombre de fois qu'une animation est jouée */
+    animation-iteration-count: infinite;
+    /* Ajouter un délai avant le lancement de l'animation */
+    animation-delay: .5s;
+    /* Le rythme où se déroule l'animation */
+    animation-timing-function: cubic-bezier(.4,1.94,0,-0.61);
+}
+.cloud div
+{
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    /* Regroupement de toute les propriétés d'animation en une seule */
+    animation: darkCloud 3s linear infinite alternate;
+}
+.part1
+{
+    top: -35%;
+}
+.part2
+{
+    left: 35%;
+}
+.part3
+{
+    left: -35%;
+}
+/* 
+    Pour créer des animations en CSS, 
+    On va devoir créer des @keyframes suivi d'un nom choisi par nos soins.
+    Cette keyframe va au moins contenir une étape de départ "from" et une étape d'arrivé "to"
+    Indiquant l'état de départ et de fin de notre élément.
+
+    Une fois créé, il faudra encore la lier à un élément de notre page.
+*/
+@keyframes darkCloud 
+{
+    from
+    {
+        background-color: white;
+    }
+    to
+    {
+        background-color: grey;
+    }
+}
+/* 
+    On peut remplacer "from" et "to" par "0%" et "100%"
+    Mais on peut aussi donner autant d'étape clef que voulu entre ces deux en indiquant leur valeur en pourcentage.
+*/
+@keyframes cloudMove 
+{
+    0%
+    {
+        right: -30vw;
+        height: 5px;
+        width: 5px;
+    }
+    30%
+    {
+        top: 100vh;
+    }
+    70%
+    {
+        top: 100px;
+    }
+    100%
+    {
+        right: 100vw;
+        height: 250px;
+        width: 250px;
+    }
+}

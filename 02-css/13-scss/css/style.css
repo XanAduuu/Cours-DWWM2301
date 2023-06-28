@@ -1,0 +1,210 @@
+@charset "UTF-8";
+/* 
+    Un fichier commençant par un "_" est dit "partial" 
+    C'est à dire que c'est un fichier qui a pour but d'être importé dans un autre.
+    Il ne sera pas compilé par SASS.
+*/
+ul {
+  background-color: goldenrod;
+  /* 
+      @for permet de répéter quelque chose un certain nombre de fois.
+      $i va prendre à chacune de ces itérations, une valeur différente.
+      avec "from" je lui indique sa valeur de départ, ici "0"
+      Puis avec "to" sa valeur d'arrivé
+
+      La fonction "lenght" va m'indiquer le nombre de paramètre dans la variable donnée en paramètre.
+  */
+  /* 
+      nth() permet la selection d'un élément dans ma variable.
+      Ici à chaque boucle j'utilise donc les différents selecteurs que j'ai dans mon paramètre $li
+
+      la première itération affichera .truc1{}
+      La seconde itération affichera .truc2{}
+      et ainsi de suite
+  */
+  /* 
+      nth() permet la selection d'un élément dans ma variable.
+      Ici à chaque boucle j'utilise donc les différents selecteurs que j'ai dans mon paramètre $li
+
+      la première itération affichera .truc1{}
+      La seconde itération affichera .truc2{}
+      et ainsi de suite
+  */
+  /* 
+      nth() permet la selection d'un élément dans ma variable.
+      Ici à chaque boucle j'utilise donc les différents selecteurs que j'ai dans mon paramètre $li
+
+      la première itération affichera .truc1{}
+      La seconde itération affichera .truc2{}
+      et ainsi de suite
+  */
+  /* 
+      nth() permet la selection d'un élément dans ma variable.
+      Ici à chaque boucle j'utilise donc les différents selecteurs que j'ai dans mon paramètre $li
+
+      la première itération affichera .truc1{}
+      La seconde itération affichera .truc2{}
+      et ainsi de suite
+  */
+  /* 
+      nth() permet la selection d'un élément dans ma variable.
+      Ici à chaque boucle j'utilise donc les différents selecteurs que j'ai dans mon paramètre $li
+
+      la première itération affichera .truc1{}
+      La seconde itération affichera .truc2{}
+      et ainsi de suite
+  */
+}
+ul .truc1, ul header {
+  font-size: 30px;
+}
+ul .truc2 {
+  font-size: 40px;
+}
+ul .truc3 {
+  font-size: 50px;
+}
+ul .truc4 {
+  font-size: 60px;
+}
+ul .truc5 {
+  font-size: 70px;
+}
+
+/* 
+    Pour importer un partial, je vais utiliser @use suivi du nom du partial sans "_" ni extension.
+    @use doit être placé avant toute autre règles.
+*/
+h1 {
+  color: green;
+}
+
+h2 {
+  color: yellow;
+}
+
+section.sass {
+  background-color: aquamarine;
+  /* 
+      Le nesting permet d'inclure un selecteur dans un autre.
+      Ici je ne selectionne que les h2 se trouvant dans ma section.
+  */
+}
+section.sass h2 {
+  background-color: brown;
+  /* & fait référence au selecteur parent, ici on est dans h2 donc il vaut h2 */
+}
+section.sass h2 span {
+  font-style: italic;
+}
+section.sass h2:hover {
+  transform: scale(1.5);
+}
+
+/* 
+    Les variables SCSS sont un peu plus simple d'utilisation et n'apparaissent pas en CSS
+    Elles doivent commencer par un "$"
+*/
+.sass p {
+  background-color: violet;
+}
+
+/* 
+    Un extend permet de créer un morceau de CSS, réutilisable à plusieurs endroits.
+    un extend commence par un "%" suivi de son nom
+*/
+main ul, header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.truc1, header {
+  background-color: lightgreen;
+}
+
+header {
+  /* 
+      Je peux réutiliser ce morceau de code en utilisant 
+      "@extend" suivi du nom de l'extend que je souhaite utiliser
+  */
+}
+
+main ul {
+  flex-direction: column;
+}
+
+/* 
+    Pareillement aux @extends, les @mixin permettent de créer des morceaux de code réutilisable.
+    La principale différence, étant qu'on pourra leur donner des paramètres.
+*/
+.truc2 {
+  /* 
+      On peut donner entre les parenthèses de notre mixin des variables que l'on nommera "paramètre"
+      Ces paramètres peuvent être aussi nombreux que souhaité, ils seront alors séparés d'une virgule.
+
+      à partir du moment où on a donné un paramètre, il faudra que lors de l'appel de la mixin, la valeur de ce paramètre soit donnée.
+
+      Cela est vrai à moins que l'on ai donné une valeur par défaut au paramètre.
+      pour cela on fera suivre ce paramètre de ":" et de sa valeur par défaut.
+  */
+  position: absolute;
+  top: 20%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.truc3 {
+  /* 
+      On peut donner entre les parenthèses de notre mixin des variables que l'on nommera "paramètre"
+      Ces paramètres peuvent être aussi nombreux que souhaité, ils seront alors séparés d'une virgule.
+
+      à partir du moment où on a donné un paramètre, il faudra que lors de l'appel de la mixin, la valeur de ce paramètre soit donnée.
+
+      Cela est vrai à moins que l'on ai donné une valeur par défaut au paramètre.
+      pour cela on fera suivre ce paramètre de ":" et de sa valeur par défaut.
+  */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 600%);
+}
+
+/* 
+    Une fonction va prendre une ou plusieurs valeurs en paramètre.
+    Travailler avec ou les transformer avant de rendre une nouvelle valeur.
+
+    Ici je prend une couleur
+*/
+.truc4 {
+  background-color: red;
+  color: #1affff;
+}
+
+.truc1, header {
+  background-color: chartreuse;
+  width: 200px;
+  height: 200px;
+  /* 
+      On peut conditionner certaines règles.
+      Par exemple ici, je lui demande "est ce que $w à la même valeur que $h" 
+      Si oui, lui donner un border radius de 50%
+      Si non, lui en donner un de 5px;
+  */
+  border-radius: 50%;
+}
+
+.truc5 {
+  background-color: darkred;
+  width: 230px;
+  height: 100px;
+  /* 
+      On peut conditionner certaines règles.
+      Par exemple ici, je lui demande "est ce que $w à la même valeur que $h" 
+      Si oui, lui donner un border radius de 50%
+      Si non, lui en donner un de 5px;
+  */
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,94 @@
+*, ::before, ::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    height: 100vh;
+    display: flex;
+    background-color: black;
+}
+.loading1
+{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: white;
+}
+.circle1, .circle2, .circle3
+{
+    border-radius: 50%;
+    margin: 0 30px;
+    width: 150px; 
+    height: 150px;
+    background-color: black;
+    animation: bounce 0.38s infinite alternate;
+}
+.circle2
+{
+    animation-delay: 0.05s;
+}
+.circle3
+{
+    animation-delay: 0.10s;
+}
+@keyframes bounce {
+    from{
+        transform: translateY(90px);
+    }
+    to{
+        transform: translateY(-30px);
+    }
+}
+.loading2
+{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    display: block;
+    width: 50vw;     
+    height: 100vh;
+}
+.t1, .t2, .t3
+{
+    width: 200px; 
+    height: 200px;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    margin: auto;
+    position: absolute;
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.t1
+{
+    border-top: 5px solid red;
+    width: 300px; 
+    height: 300px;
+    animation-duration: 3s;
+}
+.t2
+{
+    border-top: 5px solid crimson;
+    width: 250px; 
+    height: 250px;
+    animation-duration: 2s;
+}
+.t3
+{
+    border-top: 5px solid pink;
+    animation-duration: 1.5s;
+}
+@keyframes rotate {
+    100%{
+        transform: rotate(360deg);
+    }
+}

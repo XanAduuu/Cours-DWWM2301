@@ -1,0 +1,107 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    height: 400vh;
+}
+header
+{
+    padding: 1rem;
+    background-color: slategray;
+    color: antiquewhite;
+    text-align: center;
+    /* 
+        La position fixed va retirer l'élément du flux de la page et l'accrocher au scrolling de la page.
+    */
+    position: fixed;
+    width: 100%;
+    /* On peut venir ajouter plusieurs images en backgrounds, 
+    pour cela il suffit de les séparer d'une virgule.
+    Les premières seront au dessus des suivantes */
+    background-image: url("../../ressources/images/favicon.ico"), url("../../ressources/images/paysage/space.jpg");
+    /* Si on ajoute une propriété, elle s'appliquera à touteles images */
+    background-repeat: no-repeat;
+    /* Si on en ajoute plusieurs séparés d'une virgule, elles suivront l'ordre des images, la première propriété pour la première image et ainsi de suite. */
+    background-size: contain, cover;
+    background-position: 20px, center;
+    /* z-index permet de modifier la couche sur laquelle se trouve l'élément.
+    Par défaut tout les éléments HTML sont sur la couche 0.
+    Si je donne un z-index négatif, ils passeront derrière.
+    Si j'en donne un positif ils passeront devant.
+    
+    à z-index égaux, ce sont les éléments enfants ou arrivant après qui passent devant.*/
+    z-index: 1;
+}
+nav, main
+{
+    margin-top: 50px;
+    display: inline-block;
+    height: 100%;
+    padding: 2rem;
+}
+nav
+{
+    width: 200px;
+    /* la fonction linear-gradient permet de créer des dégradés
+    On lui indiquera en premier l'angle du dégradé (avec des degrés ou des mots clefs) puis après une virgule, autant de couleur que l'on souhaite séparés de virgules.
+    On pourra aussi préciser avec les couleurs un pourcentage indiquant à partir d'où le dégradé peut commencer.
+    ! ATTENTION, malgré que ce soit des couleurs, il faut utiliser background-image */
+    background-image: 
+        linear-gradient(90deg, blue 33%, white 33%, white 66%, red 66%);
+}
+nav ul
+{
+    /* les différentes positions peuvent être accompagnés des propriétés "top", "bottom", "right" et "left" permettant de les placers selon la position utilisé.
+    Ces propriétés ne fonctionnent pas sur un élément non positionné (static) */
+    top: 70px;
+    /* En position sticky, dès que le scroll atteindra la position indiquée, l'élément suivra le scrolling tant qu'il ne quitte pas son parent. */
+    position: sticky;
+}
+main
+{
+    /* calc permet de faire un calcul en css, attention les espaces sont important */
+    width: calc(100% - 205px);
+    background: linear-gradient(-45deg, black 33%, yellow 33%, yellow 66%, black 66%);
+    /* La position relative permettre de déplacer l'élément par rapport à sa position d'origine, il n'est cependant pas retiré du flux, c'est à dire que peu importe comment on va le déplacer, sa position d'origine restera toujours libre. */
+    position: relative;
+    top: 50px;
+    color: antiquewhite;
+}
+button
+{
+    /* En absolute, l'élément va quitter le flux de la page, et venir se positionner par rapport à son parent positionné le plus proche (si aucun, ce sera le body) */
+    position: absolute;
+    top: 5px;
+    bottom: 0;
+    right: 0;
+}
+img
+{
+    width: 100px;
+    /* float va retirer l'élément de son flux original pour le replacer ailleurs. Il permettra entre autre chose d'avoir du texte suivant les contours de l'élément. */
+    float: left;
+    border-radius: 50%;
+    /* shape-outside va permettre d'avoir le texte autour d'un élément en float de suivre la forme de l'élément si celui ci est différent de rectangulaire. (par exemple ici un cercle) */
+    shape-outside: margin-box;
+    margin: 5px;
+}
+main p:first-child
+{
+    /* un dégradé en forme de cercle */
+    background: radial-gradient(red, white 80%);
+}
+main p:last-child
+{
+    /* un dégradé en forme de cone */
+    background: conic-gradient(blue, green);
+}
+button
+{
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    bottom: unset;
+}

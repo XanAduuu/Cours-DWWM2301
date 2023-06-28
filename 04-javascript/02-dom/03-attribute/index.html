@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les attributs</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+    <script src="./exercice/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1 id="mainTitle">
+            Les Escaliers
+        </h1>
+    </header>
+    <main>
+        <p class="step marche1">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quasi sequi tempora provident laudantium. Architecto minima nobis aperiam eaque atque laborum omnis quo perspiciatis autem iusto, harum alias voluptates ex.
+        </p>
+        <p class="step marche2">
+            Alias saepe magni natus magnam assumenda deleniti cupiditate ad hic at minima? Reprehenderit, consequatur fuga. Illum atque culpa error vel? Saepe modi, sit hic officiis aut minima et ab neque?
+        </p>
+        <p class="step marche3">
+            Perferendis necessitatibus in sint reiciendis laboriosam rem quis libero dolor vitae architecto autem laborum similique, veniam repellat tempora sed impedit distinctio aut reprehenderit. Aperiam reprehenderit, distinctio minus debitis unde mollitia?
+        </p>
+        <p class="step marche4">
+            Ipsam odit aliquam explicabo maiores iure, nihil voluptatem unde expedita, porro beatae, magni incidunt voluptatibus. Aperiam tempore expedita ullam totam cumque mollitia sapiente accusamus iusto pariatur? In facere vero ut?
+        </p>
+        <p class="step marche5">
+            Placeat iusto ad maiores architecto voluptates. Voluptatem ullam placeat aut beatae iste ea quod laborum vero, sit architecto corrupti, dolorum at esse possimus. Omnis illo numquam mollitia delectus eos nulla.
+        </p>
+    </main>
+    <footer>
+        <ul>
+            <li>
+                <a href="https://www.google.fr" data-color="green">Menu 1</a>
+            </li>
+            <li>
+                Menu 2
+            </li>
+            <li>
+                Menu 3
+            </li>
+        </ul>
+    </footer>
+    <aside>
+        <div>
+            <h2>
+                Santé
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nisi odio numquam eveniet eos reprehenderit minus delectus, voluptas iste pariatur necessitatibus voluptatum accusantium aperiam aspernatur neque vero rerum. Consequatur, necessitatibus.
+            </p>
+            <button>
+                bidule
+            </button>
+            <button>
+                machin
+            </button>
+        </div>
+    </aside>
+
+    <!-- 
+        En une seule commande : 
+        (header>h1#mainTitle>{Les Escaliers})+(main>p*5.step.marche$>lorem)+(footer>ul>li*3>{Menu $})+aside>div>(h2>{Santé})+(p>lorem)+(button>{bidule})+button>{machin}
+    -->
+</body>
+</html>

@@ -1,0 +1,101 @@
+body
+{
+    background-color: bisque;
+    margin: 0;
+}
+h1, h2
+{
+    text-align: center;
+}
+article
+{
+    margin: 1rem, 10px;
+    border: 1px solid grey;
+    padding: 0.5rem;
+}
+/* ----------- Media Queries -------------- */
+/* 
+    Les media queries permettent d'appliquer des règles
+    qu'à certaines conditions.
+    Ici par exemple j'indique que les règles suivantes ne s'appliqueront qu'à partir de 500px seulement pour les écrans.
+ */
+@media screen and (min-width: 500px)
+{
+    /* 
+        les règles précédentes ne sont pas annulées,
+        Nous allons simplement écrire les règles qui doivent être modifié dans ce format d'écran
+    */
+    body
+    {
+        background-color: lightgreen;
+    }
+    article
+    {
+        display: inline-block;
+        width: 45%;
+    }
+}
+@media screen and (min-width: 900px) 
+{
+    body
+    {
+        background-color: lightblue;
+    }
+    article
+    {
+        width: 30%;
+    }
+}
+/* Si on part du plus grand au plus petit */
+@media screen and (max-width: 700px){}
+/* règle spécifique à l'impression */
+@media print {}
+/* règle spécifique à l'orientation paysage ou portrait */
+@media screen and (orientation: landscape){}
+@media screen and (orientation: portrait){}
+/* Vérifie si l'utilisateur utilise un thème sombre ou non */
+@media (prefers-color-scheme: dark) {}
+@media (prefers-color-scheme: light) {}
+
+/* ---------------- Compatibilité ----------- */
+
+/* 
+    Certaines propriétés CSS ne fonctionnent que sur certains navigateurs.
+    d'autres ont même besoin d'un prefixe pour fonctionner.
+
+    On pourra noter les prefixes:
+    -webkit- est un prefixe pour les navigateurs sous chromium
+    -moz- est celui pour firefox.
+
+    Prenons l'exemple suivant, je souhaite modifier la scrollbar:
+*/
+div.scroll
+{
+    /* Je rend l'élément scrollable */
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    overflow-y: auto;
+    /* Je change la couleur et la taille de la barre de défilement. */
+    scrollbar-color: red pink;
+    scrollbar-width: thin;
+}
+/* 
+    Mais si on ouvre cela sur différents navigateurs,
+    nous verront que cela fonctionne sur firefox mais pas chez chrome. 
+    Il faudra donc ajouter des règles spécifiques à chrome
+*/
+div.scroll::-webkit-scrollbar
+{
+    background-color: pink;
+    width: 8px;
+}
+div.scroll::-webkit-scrollbar-thumb
+{
+    background-color: red;
+}
+/* 
+    si vous regardez en bas de page de MDN ou sur https://caniuse.com/,
+    Vous pourrez trouver un tableau de compatibilité des différentes propriétés et selecteurs CSS.
+    indiquant ainsi sur quel navigateur et depuis quelle version vous pouvez l'utiliser.
+*/

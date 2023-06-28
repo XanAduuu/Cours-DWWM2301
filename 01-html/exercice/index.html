@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- L'oublie de la langue -->
+<html lang="fr">
+    <!-- Il y a jusqu'à 20 erreurs à trouver. -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trouver les erreurs</title>
+    <!-- La mauvaise description -->
+    <meta name="description" content="Exercice sur les bonnes conduites HTML">
+    <!-- Le type qui ne correspond pas -->
+    <link rel="shortcut icon" href="../../ressources/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- La sémantique qui ne correspond pas -->
+    <header id="accueil">
+        <!-- l'attribut "alt" oublié -->
+        <img src="../../ressources/images/icon/AFCI-LOGO.svg" alt="logo du site">
+        <!-- Il est mieux de commencer avec des titres de plus grande importance pour réduire par la suite -->
+        <h1>super site !</h1>
+    </header>
+    <!-- les listes (ul, ol, menu) n'acceptent que des balises "li" -->
+    <h1>Navigation</h1>
+    <menu>
+        <!-- Les liens internes au site de devraient pas ou peu ouvrir de nouveaux onglets -->
+        <!-- Les li n'étaient pas fermés -->
+        <li><a href="#accueil">accueil</a></li>
+        <!-- On essaye d'avoir une navigation interne qui fait du sens par rapport à notre page -->
+        <li><a href="#listeArticle">articles</a></li>
+        <li><a href="#contact">contact</a></li>
+    </menu>
+    <main>
+        <!-- un article servant à contenir plusieurs articles semble un peu mauvais, changeons l'article en section et les sections en article. -->
+        <section id="listeArticle">
+            <!-- Ajout d'un titre pour chaque section ou article -->
+            <h2>liste des articles</h2>
+            <!-- Et inversement les sections deviennent des articles -->
+            <article>
+                <!-- Les sections et articles devraient avoir un titre -->
+                <h3>Le titre de mon premier article !</h3>
+                <!-- Main ne devrait pas apparaître en tant que descendant d'un article, d'une section ou d'un autre main -->
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis recusandae sequi ex ullam, deleniti iure aspernatur quis eum quod voluptatum minima optio commodi unde quas dolore iste vero in saepe?
+                </p>
+            </article>
+            <article>
+                <h3>Le titre de mon second article !</h3>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis recusandae sequi ex ullam, deleniti iure aspernatur quis eum quod voluptatum minima optio commodi unde quas dolore iste vero in saepe?
+                </p>
+            </article>
+        </section>
+    </main>
+    <!-- Il ne devrait y avoir qu'un seul main visible sur un document -->
+    <footer>
+        <!-- Le formulaire sera par défaut en get et rechargera la page mais c'est plus parlant si on l'écrit directement -->
+        <form id="contact" action="#" method="post">
+            <!-- à la place de valeur par défaut, des placeholder serait plus pratique -->
+            <input type="text" name="nom" placeholder="Votre nom !">
+            <br>
+            <!-- Chaque input doit avoir un "name" différent -->
+            <input type="text" name="prenom" placeholder="votre prénom !">
+            <br>
+            <!-- Un textarea est plus adapté à un long texte -->
+            <textarea name="commentaire" placeholder="votre commentaire !"></textarea>
+            <br>
+            <input type="submit" value="Envoyer">
+        </form>
+    </footer>
+</body>
+</html>

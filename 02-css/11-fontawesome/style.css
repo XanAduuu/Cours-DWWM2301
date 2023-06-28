@@ -1,0 +1,19 @@
+*{
+    /* Les icones importé via fontawesome dans les balises "i" sont du texte */
+    color: green;
+    font-size: 2rem;
+}
+img
+{
+/* un fichier svg dans une balise img est une image classique */
+    width: 200px;
+    filter:blur(5px);
+}
+svg
+{
+    width: 200px;
+    /* Le svg à ses propriétés propres pour être modifié */
+    fill:purple;
+    stroke: aqua;
+    stroke-width: 10px;
+}

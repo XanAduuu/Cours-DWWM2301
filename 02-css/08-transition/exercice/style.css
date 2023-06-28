@@ -1,0 +1,117 @@
+body
+{
+    background-color: gray;
+}
+li:nth-child(1) button
+{
+    background-color: rgb(219,75,99);
+    border-radius: 10%;
+    width: 180px;
+    height: 60px;
+    color: white;
+    font-size: 25px;
+    box-shadow: 3px 3px 1px 3px rgba(0, 0, 0, 0.473);
+    transition: transform .2s ease-in;
+    border: solid rgb(219,75,99);
+}
+li:nth-child(1) button:hover
+{
+    transform: scale(0.9);
+}
+li:nth-child(1) button:active
+{
+    transform: rotateX(180deg);
+}
+li:nth-child(2) button
+{
+    font-size: 3rem;
+    padding: 20px 50px;
+    border: 10px solid black;
+    opacity: 0.3;
+    transition: transform 2s;
+}
+li:nth-child(2) button:hover
+{
+    color: red;
+    border-color: red;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: rotateY(360deg);
+    transition: all 0.1ms;
+}
+li:nth-child(3) button i
+{
+    display: inline-block;
+    background-color: orange;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition-duration: 1s;
+}
+li:nth-child(3) button
+{
+    font-size: 1.5rem;
+    height: 40px;
+    width: 200px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: orange;
+    border: 2px solid orange;
+    border-radius: 30px;
+    transition-duration: 0.5s;
+}
+li:nth-child(3) button:hover
+{
+    border: 2px solid white;
+    cursor: pointer;
+}
+li:nth-child(3) button:hover i
+{
+    background-color: white;
+    color: orange;
+    transform: rotate(360deg);
+}
+li:nth-child(4) button
+{
+    font-size: 2rem;
+    margin: 2rem;
+    padding: 1rem;
+    color: blueviolet;
+    border: none;
+    background-color: transparent;
+    position: relative;
+}
+li:nth-child(4) button:hover
+{
+    color: black;
+}
+li:nth-child(4) button:active
+{
+    color: hotpink;
+    transition: .4s;
+}
+li:nth-child(4) button hr
+{
+    height: 3px;
+    background-color: blueviolet;
+    border: none;
+    width: 0px;
+}
+li:nth-child(4) button:hover hr
+{
+    width: 100%;
+    transition: .3s ease;
+}
+li:nth-child(4) button:hover hr + hr
+{
+    position: absolute;
+    bottom: -5px;
+    width: 87%;
+    right: 15px;
+}
+li:nth-child(4) button:active hr
+{
+    background-color: hotpink;
+}

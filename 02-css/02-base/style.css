@@ -1,0 +1,130 @@
+/* Import d'une police d'écriture : */
+@font-face {
+    /* Nom que l'on donne à la police : */
+    font-family: "BlakaHollow";
+    /* chemin vers le fichier contenant la police : */
+    src: url("../../ressources/fonts/BlakaHollow-Regular.ttf");
+}
+/* La racine de notre document : */
+:root
+{
+    /* Une variable css commence par "--" puis peut être nommé comme on le souhaite.
+    Elle servira à contenir une valeur que l'on pourra réutiliser ailleurs dans notre css. */
+    --main-background-color: #ABCDEF;
+    --mainTextColor: #b68f68;
+    --divTextSize: 10px;
+    font-size: 2px;
+}
+body
+{
+    /* Lorsque l'on met un background color sur le body, c'est toute la page qui est affecté, malgré que le body ne fasse pas la taille de la page. */
+    background-color: aquamarine;
+}
+.target1
+{
+    font-family: "BlakaHollow";
+    background-color: var(--main-background-color);
+    color: var(--mainTextColor);
+    font-size: var(--divTextSize);
+}
+.target2
+{
+    /* 
+        Les couleurs peuvent être selectionné par différentes façons:
+            Les mots clefs prédéfinis (red, green, blue, chartreuse...)
+            La fonction rgb() qui prendra entre ses parenthèses 3 nombres séparés d'une virgule représentant chacun l'intensité de "rouge, vert et bleu"
+    */
+    background-color: rgb(0,0,0);
+    color: rgb(255, 255, 255);
+}
+.target3
+{
+    /* 
+        En hexadecimal, la couleur commence par un "#" suivi de 6 caractères allant de 0 à F représentant pour la première paire le rouge, la seconde le vert, et la dernière le bleu
+
+        En cas de répétition d'un même caractère, il est possible d'écrire la couleur avec seulement 3 caractères :
+            #000 = #000000 / #FFF = #FFFFFF
+    */
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.target4
+{
+    /* 
+        Une dernière façon de gérer la couleur est la fonction hsl()
+        qui prendra entre ses parenthèses 3 valeurs séparés d'une virgule
+        la première représente le degré sur une roue chromatique, 
+        la seconde, la saturation de la couleur en pourcentage,
+        la troisième, la brillance de la couleur en pourcentage
+    */
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(360, 100%, 100%);
+}
+.target5
+{
+    /* 
+        Il est possible de paramétrer une transparence à nos couleurs en changeant les fonctions rgb et hsl par rgba et hsla 
+        et en leur ajoutant une quatrième valeur, allant de 0 (transparent) à 1 (Totalement visible)
+
+        Il est aussi possible d'ajouter de la transparence à une valeur hexadecimal en lui rajoutant deux charactères en plus.
+    */
+    background-color: rgba(21, 93, 226, 0.5);
+    color: hsla(0, 75%, 17%, 0.5);
+    /* color: #0000007e; */
+}
+.target6
+{
+    /* Il existe plusieurs moyens de gérer la taille en CSS, la plus classique est le pixel, noté px :*/
+    font-size: 20px;
+}
+.target7
+{
+    /* L'unité "em" signifie n fois la taille de la police de l'élément parent, 2em signifie donc 2 fois la taille de la police. */
+    font-size: 2em;
+}
+.target8
+{
+    /* L'unité "rem" a le même effet que "em" si ce n'est qu'il est basé non pas sur la taille du parent mais sur celui de la racine. Par défaut, souvent à 16px. */
+    font-size: 2rem;
+}
+body
+{
+    font-size: 10px;
+}
+.target9
+{
+    /* 
+        l'unité "vw" (viewport width) représente un pourcentage de la largeur du viewport.
+    */
+    font-size: 5vw;
+}
+.target10
+{
+    /* De même, vh (viewport height) représente un pourcentage de la hauteur du viewport */
+    font-size: 10vh;
+}
+.target1
+{
+    /* L'unité "vmax" (viewport max) représente un pourcentage de la valeur la plus grande entre la hauteur et la largeur.
+    On notera aussi l'existence de vmin qui fait l'inverse. */
+    font-size: 5vmax;
+}
+.target2
+{
+    /* Un pourcentage de la valeur du parent. */
+    font-size: 50%;
+}
+.target3
+{
+    /* 
+        Il existe plein d'autres unités de mesure mais elles ne sont pas forcément adapté à une page internet.
+        Comme le système métrique qui peut être utile si on prépare une page à imprimer
+    */
+    font-size: 1cm;
+}
+.target4
+{
+    /* La fonction clamp permet de donner un minimum et un maximum à une taille variable.
+    Ici j'indique que ma police fera minimum 10px et maximum 30px mais qu'entre les deux elle fait 5vw */
+    font-size: clamp(10px, 5vw, 30px);
+}

@@ -1,0 +1,84 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul
+{
+    /* 
+        Le display flex permet de rendre des éléments plus flexibles, adaptable aux différentes tailles d'écrans et facilement déplaçable. 
+        Si on souhaite déplacer des éléments, c'est leur parent que l'on doit viser. 
+        Ici pour déplacer mes "li", je vise mon "ul"
+    */
+    display: flex;
+    /* 
+        flex fonctionne selon un axe principal et un axe secondaire.
+        pour choisir l'axe principal, on utilisera "flex-direction" en lui indiquant "row" pour l'horizontal ou "column" pour la vertical.
+        l'axe secondaire devient celui qu'on n'a pas choisi.
+        (le sens des axes peut être inversé avec "-reverse")
+    */
+    flex-direction: row;
+    height: 15vh;
+    /* 
+        justify-content permet de placer les éléments sur l'axe principal.
+        on peut évidement les placers au début ou à la fin de l'axe (attention cela change selon le sens de l'axe)
+        on peut aussi les centrer.
+        Mais plus interessant encore on peut les espacer entre eux avec : 
+            space-between, space-around ou space-evenly
+    */
+    justify-content: space-between;
+    /* 
+        permet d'indiquer aux éléments de créer une nouvelle rangé (ou colonne) si la place vient à manquer
+    */
+    flex-wrap: wrap;
+    /* 
+        Permet de placer les éléments sur l'axe secondaire, au début, à la fin ou centrer par exemple.
+    */
+    align-items: center;
+    border: 1px solid black;
+}
+li
+{
+    width: 40vw;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: brown;
+    margin: 5px;
+    list-style: none;
+    text-align: center;
+}
+li:hover
+{
+    /* 
+        Indique à l'élément de prendre la place restante. sur l'axe principal.
+    */
+    flex-grow: 1;
+}
+section
+{
+    display: flex;
+    /* flex-flow est juste une fusion entre flex-direction et flex-wrap */
+    flex-flow: column wrap;
+    height: 150px;
+    /* 
+        gap permet de faire un espacement entre les éléments
+        C'est une fusion de row-gap et column-gap
+    */
+    gap: 10px;
+}
+article
+{
+    width: 40%;
+    background-color: aquamarine;
+}
+article:nth-of-type(3)
+{
+    background-color: aqua;
+    /* 
+        order permet de déplacer la position d'un élément en flex.
+        par défaut, tout élément est à l'order 0.
+        placer un élément à -1 le placera donc avant, ou à 1 après.
+        On peut aussi donner des ordres différents à tous nos éléments, 6,3, -4...
+    */
+    order: -1;
+}
