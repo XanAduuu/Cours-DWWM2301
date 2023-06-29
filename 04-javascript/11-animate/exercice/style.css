@@ -1,0 +1,30 @@
+*, ::before, ::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+span
+{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 4rem;
+    transition: opacity 1s linear;
+    overflow: clip;
+}
+span:nth-child(1)
+{
+    border-right: 5px solid black;
+    text-indent: 100%;
+}
+span:nth-child(2)
+{
+    text-indent: -100%;
+}

@@ -1,0 +1,20 @@
+# Le fichier .htaccess est lu par apache à chaque requête au serveur.
+# Il permet de définir des règles d'accès aux fichiers et dossier
+# ainsi que les paramètres HTTP (cache-control...)
+# Pour plus d'informations, voir : https://httpd.apache.org/docs/2.4/fr/howto/htaccess.html
+
+# On active l'outil de réécriture d'url:
+RewriteEngine On
+
+# On ajoute une condition à notre réécriture :
+RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.svg|\.css|\.js)$
+# Ici on a indiqué pour quel type de fichier on ne souhaite pas réécrire l'url.
+
+# Je redirige tous les autres liens vers l'index.php
+RewriteRule (.*) index.php [QSA,L]
+
+# (.*) est une regex indiquant ce qui doit être selectionné
+# On réécrit ce que la regex à selectionné par "index.php"
+# puis on ajoute deux "flag" : [QSA, L]
+# QSA permet de garder les paramètres get actif
+# L indique que c'est la dernière règle qui doit être appliqué.
