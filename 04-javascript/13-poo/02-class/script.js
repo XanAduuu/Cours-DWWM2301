@@ -35,3 +35,4 @@ console.log(dev);
 dev.salutation();
 dev.anniversaire();
 
+console.log(dev instanceof H, dev instanceof D);

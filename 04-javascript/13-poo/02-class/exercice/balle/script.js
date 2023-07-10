@@ -1,5 +1,4 @@
 "use strict";
-
 import B from "./Balle.js";
 
 const canvas = document.querySelector('canvas');

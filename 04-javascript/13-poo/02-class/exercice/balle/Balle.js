@@ -12,7 +12,6 @@ export default class Balle
         this.vx = this.rand(2, 10, true);
         this.vy = this.rand(2, 10, true);
         this.color = this.randColor();
-
     }
     rand(min = 0, max= 100, negative=false)
     {
