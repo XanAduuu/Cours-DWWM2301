@@ -7,6 +7,8 @@
     },
     "files":[
         "04-javascript/16-typescript/src/01-install.ts",
-        "04-javascript/16-typescript/src/02-syntaxe.ts"
+        "04-javascript/16-typescript/src/02-syntaxe.ts",
+        "04-javascript/16-typescript/src/03-exercice.ts",
+        "04-javascript/16-typescript/src/04-narrowing.ts"
     ]
 }

@@ -81,3 +81,68 @@ function clickMe(e:PointerEvent): void
 
 
 document.addEventListener("pointerdown", clickMe);
+
+/* 
+    Si une fontion est déclarée dans une variable
+    on pourra typer ses arguments et valeurs de retour ainsi :
+*/
+
+const compte: (nom:string)=>number = function(nom)
+{
+    return nom.length;
+}
+
+/* 
+    On pourra ausi indiquer qu'un argument est en lecture seule
+    C'est à dire, ne peut pas être modifiée
+*/
+
+function tri(arg: readonly any[]): void
+{
+    // Impossible de trier en read only
+    // arg.sort()
+    // Mais je peux trier sa copie
+    [...arg].sort();
+}
+
+/* 
+    La plupart du temps indiquer le type d'une variable est optionnel, TS est capable de le définir selon la première valeur donnée:
+*/
+
+let a = 5;
+// a = "test";
+
+/* 
+    Mais parfois TS peut se tromper ou avoir des doutes.
+    Il faudra donc lui préciser ouvertement :
+
+*/
+
+// const btn1 = document.querySelector("#compte");
+// btn1.style.color = "red";
+
+/* 
+    Ici queryselector indique qu'il retourne soit null soit Element 
+    or nous savons que nous avons séléctionné un "HTMLElement" qui existe bel et bien.
+
+    Il existe plusieurs façons de l'indiquer à TS:
+
+*/
+
+// Préciser le retour de notre fonction :
+const btn1 = document.querySelector("#compte") as HTMLButtonElement;
+btn1.style.color = "red";
+
+// On aura le même résultat avec :
+
+const btn2 = <HTMLButtonElement>document.querySelector("#compte");
+
+// On peut aussi annuler la possibilité que le résultat soit "null":
+
+const btn3 = document.querySelector("#compte")!;
+// La valeur de retour reste "Element"
+//btn3.style.color = "red";
+
+const btn4 = document.querySelector<HTMLButtonElement>("#compte");
+// Ici on a bien un "HTMLButtonElement" mais il est possiblement null.
+//btn4.style.color = "red";
