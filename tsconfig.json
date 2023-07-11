@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "04-javascript/16-typescript/dist",
+        "target": "ES2022",
+        "noEmitOnError": true,
+        "strict": true
+    },
+    "files":[
+        "04-javascript/16-typescript/src/01-install.ts",
+        "04-javascript/16-typescript/src/02-syntaxe.ts"
+    ]
+}
