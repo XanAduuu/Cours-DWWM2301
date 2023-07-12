@@ -45,8 +45,8 @@
     Et comme avec SCSS, il est possible de demander à typescript, de surveiller nos fichiers pour les compiler à chaque sauvegarde :
         * (npx) tsc --watch
 */
-const btn = document.querySelector("#compte");
-let i = 0;
+// const btn = document.querySelector("#compte");
+// let i = 0;
 /* btn.addEventListener("click", ()=>{
     i++;
     // Ici typescript provoque une erreur, car textContent attend un string, et "i" est un nombre.
