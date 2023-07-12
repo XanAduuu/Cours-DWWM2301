@@ -37,7 +37,6 @@ class Machin extends Truc {
 }
 /*
     On va pouvoir aussi utiliser les generics sur des classes.
-
 */
 class Collection {
     items;

@@ -41,7 +41,6 @@ class Machin extends Truc
     {
         this.textContent
     }
-
 }
 
 /* 
@@ -98,13 +97,11 @@ class Triangle
     c2 = 8;
     c3 = 2;
 }
-
 class Rectangle
 {
     c1 = 12;
     c2 = 20;
 }
-
 function getC1(arg: Rectangle)
 {
     return arg.c1;
