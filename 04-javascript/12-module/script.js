@@ -5,7 +5,7 @@
     De plus cela nous évite d'avoir plusieurs balises script dans notre HTML que l'on doit placer dans un ordre précis pour que cela fonctionne.
 
     Pour utiliser cet export import, notre fichier principal doit être lié au HTML avec l'attribut :
-    * type="module"
+        * type="module"
 
     ? -------------- EXPORT -----------------------
     Pour importer du code, il faut avant tout l'exporter.
