@@ -3,21 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BorderCardDirective } from './border-card.directive';
-import { TypeColorPipe } from './type-color.pipe';
-import { ListeRecetteComponent } from './liste-recette/liste-recette.component';
-import { DetailRecetteComponent } from './detail-recette/detail-recette.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RecetteModule } from './recette/recette.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BorderCardDirective,
-    TypeColorPipe,
-    ListeRecetteComponent,
-    DetailRecetteComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    RecetteModule,
     AppRoutingModule
   ],
   providers: [],
