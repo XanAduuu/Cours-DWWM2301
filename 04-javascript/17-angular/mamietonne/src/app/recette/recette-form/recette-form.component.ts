@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Recette } from '../Recette';
 
 @Component({
   selector: 'app-recette-form',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./recette-form.component.scss']
 })
 export class RecetteFormComponent {
-
+  @Input() recette?: Recette;
 }
