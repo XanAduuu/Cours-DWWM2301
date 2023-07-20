@@ -135,8 +135,4 @@ const btn3 = document.querySelector("#compte")!;
 // Ou changer juste une des valeurs de retour:
 const btn4 = document.querySelector<HTMLButtonElement>("#compte");
 // Ici on a bien un "HTMLButtonElement" mais il est possiblement null.
-<<<<<<< HEAD
-//btn4.style.color = "red";
-=======
 // btn4.style.color = "red";
->>>>>>> 834694e0843c26a4686215756cc7e600bf80a543
