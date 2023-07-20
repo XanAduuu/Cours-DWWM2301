@@ -104,45 +104,39 @@ function tri(arg: readonly any[]): void
     // Mais je peux trier sa copie
     [...arg].sort();
 }
-
 /* 
-    La plupart du temps indiquer le type d'une variable est optionnel, TS est capable de le définir selon la première valeur donnée:
+    La plupart du temps, indiquer le type d'une variable est optionnelle.
+    TS est capable de le définir selon la première valeur donnée :
 */
-
 let a = 5;
 // a = "test";
-
 /* 
     Mais parfois TS peut se tromper ou avoir des doutes.
     Il faudra donc lui préciser ouvertement :
-
 */
-
 // const btn1 = document.querySelector("#compte");
 // btn1.style.color = "red";
-
 /* 
-    Ici queryselector indique qu'il retourne soit null soit Element 
-    or nous savons que nous avons séléctionné un "HTMLElement" qui existe bel et bien.
-
-    Il existe plusieurs façons de l'indiquer à TS:
-
+    Ici querySelector indique qu'il retourne soit "null" soit "Element".
+    or nous savons que nous avons selectionné un "HTMLElement" qui existe belle et bien.
+    
+    Il existe plusieurs façon de l'indiquer à typescript :
 */
-
-// Préciser le retour de notre fonction :
+// préciser le retour de notre fonction :
 const btn1 = document.querySelector("#compte") as HTMLButtonElement;
 btn1.style.color = "red";
-
 // On aura le même résultat avec :
-
 const btn2 = <HTMLButtonElement>document.querySelector("#compte");
-
-// On peut aussi annuler la possibilité que le résultat soit "null":
-
+btn2.style.color = "red";
+// On peut aussi annuler la possibilité que le résultat soit "null"
 const btn3 = document.querySelector("#compte")!;
 // La valeur de retour reste "Element"
-//btn3.style.color = "red";
-
+// btn3.style.color = "red";
+// Ou changer juste une des valeurs de retour:
 const btn4 = document.querySelector<HTMLButtonElement>("#compte");
 // Ici on a bien un "HTMLButtonElement" mais il est possiblement null.
+<<<<<<< HEAD
 //btn4.style.color = "red";
+=======
+// btn4.style.color = "red";
+>>>>>>> 834694e0843c26a4686215756cc7e600bf80a543

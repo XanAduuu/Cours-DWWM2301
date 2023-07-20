@@ -20,7 +20,6 @@ truc = "bidule";
 /*
     Si une variable ou un tableau peut contenir deux types (ou plus) précis,
     on pourra utiliser le caractère "|"
-
 */
 const arr2 = ["truc", 34];
 /*
@@ -83,7 +82,6 @@ let a = 5;
 /*
     Mais parfois TS peut se tromper ou avoir des doutes.
     Il faudra donc lui préciser ouvertement :
-
 */
 // const btn1 = document.querySelector("#compte");
 // btn1.style.color = "red";
