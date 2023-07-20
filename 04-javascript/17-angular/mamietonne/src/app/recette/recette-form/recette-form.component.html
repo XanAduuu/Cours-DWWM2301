@@ -1,41 +1,45 @@
-
-<form class="recetteForm" *ngIf="recette">
-    <fieldset class="intro">
+<form class="recetteForm" *ngIf="recette" (ngSubmit)="onSubmit()" #recetteForm="ngForm">
+    <fieldset>
         <legend>Introduction</legend>
-        <div class="name">
-            <label for="name">Nom :</label>
-            <input type="text" class ="name">
+        <!-- Recette Name -->
+        <label for="nom">Nom :</label>
+        <input type="text" name="nom" id="nom" required pattern="^[a-zA-Zàéèç]{1,50}$" [(ngModel)]="recette.name" #name="ngModel">
+        <div class="error" [hidden]="name.valid || name.pristine">
+            Le nom de la recette est requise (entre 1 et 50 caractères)
         </div>
-        <div class="duree">
-            <label for="duree">Durée :</label>
-            <input type="number" class ="duree">
+        <!-- Recette Duration -->
+        <label for="duration">Durée :</label>
+        <input type="number" name="duration" id="duration" required pattern="^[1-9][0-9]*$" [(ngModel)]="recette.duration" #duration="ngModel">
+        <div class="error" [hidden]="duration.valid || duration.pristine">
+            La durée de la recette est requise (en minute)
         </div>
-        <div class="descr">
-            <label for="descr">Descrition :</label>
-            <input type="text" class ="descr">
+        <!-- Recette Description -->
+        <label for="description">Description :</label>
+        <textarea name="description" id="description" cols="30" rows="10" required pattern=".{25,}"[(ngModel)]="recette.description" #description="ngModel"></textarea>
+        <div class="error" [hidden]="description.valid || description.pristine">
+            La description de la recette est requise 
         </div>
-        <div class="type">
-            <label for="type">Type :</label>
-            <input type="checkbox" class ="type">
-        </div>
+        <!-- Recette Type -->
+        <label for="types">Type :</label>
+        <label *ngFor="let t of types" [attr.for]="t">
+            <input type="radio" name="type" id="{{t}}" [value]="t" [checked]="hasType(t)" (change)="selectType($event,t)" required>
+            <span style="background-color: {{t|typeColor}};">{{t}}</span>
+        </label>
     </fieldset>
-
-    <fieldset class="details">
+    <fieldset>
         <legend>Détails</legend>
-        <div class="ingredients">
-            <label for="ingredients">Ingrédients:</label>
-            <input type="text" class ="ingredients">
+        <!-- Recette Ingredients -->
+        <label for="ingredient">Ingrédients :</label>
+        <textarea name="ingredient" id="ingredient" cols="30" rows="10" required pattern=".{3,}" [(ngModel)]="ingredientList" #ingredients="ngModel"></textarea>
+        <div class="error" [hidden]="ingredients.valid || ingredients.pristine">
+            La liste des ingrédients de la recette est requise 
         </div>
-
-        <div class="etapes">
-            <label for="etapes">Etapes :</label>
-            <input type="text" class ="etapes">
+        <!-- Recette steps -->
+        <label for="steps">Étapes :</label>
+        <textarea name="steps" id="steps" cols="30" rows="10" required pattern=".{25,}" [(ngModel)]="stepsList" #steps="ngModel"></textarea>
+        <div class="error" [hidden]="steps.valid || steps.pristine">
+            Les étapes de la recette sont requises 
         </div>
     </fieldset>
-
-    <button classe="save">Sauvegarder</button>
-
-
-
-
+    <button type="submit" [disabled]="!recetteForm.form.valid">Sauvegarder</button>
 </form>

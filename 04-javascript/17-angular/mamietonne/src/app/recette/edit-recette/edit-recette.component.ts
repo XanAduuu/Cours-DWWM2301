@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RecetteService } from '../recette.service';
-import {ActivatedRoute} from "@angular/router";
 import { Recette } from '../Recette';
-
+import { ActivatedRoute } from '@angular/router';
+import { RecetteService } from '../recette.service';
 
 @Component({
   selector: 'app-edit-recette',
@@ -16,9 +15,8 @@ export class EditRecetteComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    const recetteId: number =  parseInt(this.route.snapshot.paramMap.get("id")??"");
+    const recetteId: number = parseInt(this.route.snapshot.paramMap.get("id")??"");
     this.recette = this.recetteService.getRecetteById(recetteId);
   }
-
 }
 
