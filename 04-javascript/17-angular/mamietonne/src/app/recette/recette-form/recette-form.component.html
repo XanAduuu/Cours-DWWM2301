@@ -7,6 +7,14 @@
         <div class="error" [hidden]="name.valid || name.pristine">
             Le nom de la recette est requise (entre 1 et 50 caractères)
         </div>
+        <!-- Recette image -->
+        <div *ngIf="isAddForm">
+            <label for="photo">Photo :</label>
+            <input type="text" name="photo" id="photo" required pattern=".+\.(jpg|jpeg|png)$" [(ngModel)]="recette.image" #photo="ngModel">
+            <div class="error" [hidden]="photo.valid || photo.pristine">
+                La photo de la recette est requise (jpg ou png)
+            </div>
+        </div>
         <!-- Recette Duration -->
         <label for="duration">Durée :</label>
         <input type="number" name="duration" id="duration" required pattern="^[1-9][0-9]*$" [(ngModel)]="recette.duration" #duration="ngModel">
