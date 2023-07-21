@@ -43,7 +43,9 @@ export class RecetteFormComponent {
     {
       this.recette.ingredients = this.ingredientList.split("\n");
       this.recette.steps= this.stepsList.split("\n");
+      this.recetteService.updateRecette(this.recette).subscribe(
+        ()=>    this.router.navigate(["/recette", this.recette?.id])
+      );
     }
-    this.router.navigate(["/recette", this.recette?.id]);
   }
 }

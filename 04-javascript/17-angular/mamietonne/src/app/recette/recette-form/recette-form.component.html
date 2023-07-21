@@ -30,16 +30,16 @@
         <legend>Détails</legend>
         <!-- Recette Ingredients -->
         <label for="ingredient">Ingrédients :</label>
-        <textarea name="ingredient" id="ingredient" cols="30" rows="10" required pattern=".{3,}" [(ngModel)]="ingredientList" #ingredients="ngModel"></textarea>
+        <textarea name="ingredient" id="ingredient" cols="30" rows="10" required pattern=".{5,}(\n|.)*" [(ngModel)]="ingredientList" #ingredients="ngModel"></textarea>
         <div class="error" [hidden]="ingredients.valid || ingredients.pristine">
             La liste des ingrédients de la recette est requise 
         </div>
         <!-- Recette steps -->
         <label for="steps">Étapes :</label>
-        <textarea name="steps" id="steps" cols="30" rows="10" required pattern=".{25,}" [(ngModel)]="stepsList" #steps="ngModel"></textarea>
+        <textarea name="steps" id="steps" cols="30" rows="10" required pattern=".{5,}(\n|.)*" [(ngModel)]="stepsList" #steps="ngModel"></textarea>
         <div class="error" [hidden]="steps.valid || steps.pristine">
             Les étapes de la recette sont requises 
         </div>
     </fieldset>
-    <button type="submit" [disabled]="!recetteForm.form.valid">Sauvegarder</button>
+    <button type="submit"[disabled]="!recetteForm.form.valid">Sauvegarder</button>
 </form>

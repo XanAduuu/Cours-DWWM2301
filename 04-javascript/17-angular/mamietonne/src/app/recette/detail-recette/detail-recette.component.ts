@@ -23,7 +23,7 @@ export class DetailRecetteComponent implements OnInit {
     const recetteId: number = parseInt(this.route.snapshot.paramMap.get("id")??"");
     console.log(recetteId);
     
-    this.recette = this.recetteService.getRecetteById(recetteId);
+    this.recetteService.getRecetteById(recetteId).subscribe(recette=>this.recette = recette);
     console.log(this.recette);
     
   }
@@ -34,5 +34,10 @@ export class DetailRecetteComponent implements OnInit {
   goToEditRecette()
   {
     this.router.navigate(["/recette/edit", this.recette?.id])
+  }
+  deleteRecette()
+  {
+    if(!this.recette)return
+    this.recetteService.deleteRecetteById(this.recette.id!).subscribe(()=>this.goToRecetteListe());
   }
 }
