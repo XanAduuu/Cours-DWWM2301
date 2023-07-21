@@ -9,9 +9,11 @@ import { RecetteService } from './recette.service';
 import { FormsModule } from '@angular/forms';
 import { EditRecetteComponent } from './edit-recette/edit-recette.component';
 import { RecetteFormComponent } from './recette-form/recette-form.component';
+import { AddRecetteComponent } from './add-recette/add-recette.component';
 
 const recetteRoutes: Routes = 
 [
+  {path:"recette/add", component: AddRecetteComponent},
   {path: "recette/edit/:id", component: EditRecetteComponent},
   {path: "recettes", component: ListeRecetteComponent},
   {path: "recette/:id", component: DetailRecetteComponent}
@@ -24,7 +26,8 @@ const recetteRoutes: Routes =
     BorderCardDirective,
     TypeColorPipe,
     EditRecetteComponent,
-    RecetteFormComponent
+    RecetteFormComponent,
+    AddRecetteComponent
   ],
   imports: [
     CommonModule,

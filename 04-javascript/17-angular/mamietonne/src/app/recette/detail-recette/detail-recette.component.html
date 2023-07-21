@@ -31,4 +31,5 @@
 <p *ngIf="!recette"> Aucune recette n'a été trouvé.</p>
 
 <button *ngIf="recette" (click)="goToEditRecette()">Éditer</button>
+<button *ngIf="recette" (click)="deleteRecette()">Supprimer</button>
 <button (click)="goToRecetteListe()">Retour</button>
