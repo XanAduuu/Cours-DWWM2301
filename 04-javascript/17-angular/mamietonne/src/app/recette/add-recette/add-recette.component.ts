@@ -8,17 +8,13 @@ import { Recette } from '../Recette';
 })
 export class AddRecetteComponent implements OnInit {
   recette?: Recette;
-
-  ngOnInit(): void
-  {
+  ngOnInit(): void {
     this.recette = this.newRecette();
-
   }
-
   newRecette(): Recette
   {
     return {
-      id : 0,
+      id: 0,
       name: "",
       type: "Plat",
       image: "",
@@ -29,5 +25,4 @@ export class AddRecetteComponent implements OnInit {
       createdAt: new Date()
     };
   }
-
 }

@@ -3,7 +3,7 @@
         <legend>Introduction</legend>
         <!-- Recette Name -->
         <label for="nom">Nom :</label>
-        <input type="text" name="nom" id="nom" required pattern="^[a-zA-Zàéèç]{1,50}$" [(ngModel)]="recette.name" #name="ngModel">
+        <input type="text" name="nom" id="nom" required pattern="^[a-zA-Zàéèç\s]{1,50}$" [(ngModel)]="recette.name" #name="ngModel">
         <div class="error" [hidden]="name.valid || name.pristine">
             Le nom de la recette est requise (entre 1 et 50 caractères)
         </div>
@@ -23,14 +23,21 @@
         </div>
         <!-- Recette Description -->
         <label for="description">Description :</label>
-        <textarea name="description" id="description" cols="30" rows="10" required pattern=".{25,}"[(ngModel)]="recette.description" #description="ngModel"></textarea>
+        <textarea name="description" id="description" cols="30" rows="10" required pattern=".{25,}" [(ngModel)]="recette.description" #description="ngModel"></textarea>
         <div class="error" [hidden]="description.valid || description.pristine">
             La description de la recette est requise 
         </div>
         <!-- Recette Type -->
         <label for="types">Type :</label>
         <label *ngFor="let t of types" [attr.for]="t">
-            <input type="radio" name="type" id="{{t}}" [value]="t" [checked]="hasType(t)" (change)="selectType($event,t)" required>
+            <input 
+                type="radio" 
+                name="type" 
+                id="{{t}}"
+                [value]="t"
+                [checked]="hasType(t)"
+                (change)="selectType($event, t)"
+                required>
             <span style="background-color: {{t|typeColor}};">{{t}}</span>
         </label>
     </fieldset>
@@ -49,5 +56,5 @@
             Les étapes de la recette sont requises 
         </div>
     </fieldset>
-    <button type="submit"[disabled]="!recetteForm.form.valid">Sauvegarder</button>
+    <button type="submit" [disabled]="!recetteForm.form.valid">Sauvegarder</button>
 </form>

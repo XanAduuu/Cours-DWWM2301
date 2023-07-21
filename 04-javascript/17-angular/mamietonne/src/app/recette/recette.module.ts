@@ -13,7 +13,7 @@ import { AddRecetteComponent } from './add-recette/add-recette.component';
 
 const recetteRoutes: Routes = 
 [
-  {path: "recette/add", component: AddRecetteComponent},
+  {path:"recette/add", component: AddRecetteComponent},
   {path: "recette/edit/:id", component: EditRecetteComponent},
   {path: "recettes", component: ListeRecetteComponent},
   {path: "recette/:id", component: DetailRecetteComponent}
