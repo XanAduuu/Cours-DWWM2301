@@ -7,3 +7,12 @@ Description: Un thème WordPress pour le cours DWWM de l'AFCI
 Requires at least: WordPress 6.2.2
 Version: 0.1
 */
+
+body
+{
+    background-color: aquamarine;
+}
+header
+{
+    background-color: chartreuse;
+}
