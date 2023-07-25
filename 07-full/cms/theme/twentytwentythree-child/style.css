@@ -1,0 +1,14 @@
+/* 
+    Theme Name: Adaptation de Twenty twenty three
+    Theme URI: https://github.com/NolwennWM/Cours-DWWM2301
+    Author: Nolwenn WEBER-MARQUISET
+    Author URI: http://www.marquiset.fr
+    Description: Un thème enfant WordPress pour le cours DWWM de l'AFCI
+    Requires at least: WordPress 6.2.2
+    Version: 0.1
+    Template: twentytwentythree
+*/
+body
+{
+    background-color: chartreuse;
+}
