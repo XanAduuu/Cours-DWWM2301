@@ -1,0 +1,47 @@
+*, ::before, ::after{
+    padding: 0;
+    margin: 0;
+    box-sizing : border-box;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr, 1fr, 1fr,1fr;
+    grid-template-columns: 1fr, 1fr, 1fr, 1fr;
+}
+.header
+{
+    grid-row: 1 / 5;
+    grid-column: 1 / 2;
+    margin: 0;
+}
+.header .background
+{   display: flex;
+    background-image: url(./assets/images/header/headerbg.jpg);
+}
+.client
+{
+    display:flex;
+    height : 20px;
+    width: 300px;
+    justify-content:center;
+}
+
+.client p
+{
+    
+    border-color: white;
+    font-family: "Aneliza-bold";
+    color:#fff;
+    background-color: #311C3B;
+}
+
+/* .icons
+{
+    justify-content: space-between;
+    color: white;
+    border-color: #A6CE37;
+} */
