@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RECETTES } from '../RecetteList';
 import { Recette } from '../Recette';
+import { Router } from '@angular/router';
+import { RecetteService } from '../recette.service';
 
 @Component({
   selector: 'app-liste-recette',
@@ -8,11 +9,14 @@ import { Recette } from '../Recette';
   styleUrls: ['./liste-recette.component.scss']
 })
 export class ListeRecetteComponent implements OnInit{
-  recetteList: Recette[] = RECETTES;
+  recetteList: Recette[] = [];
   recetteSelected: Recette|undefined;
+
+  constructor(private router: Router, private recetteService: RecetteService){}
 
   ngOnInit(): void 
   {
+    this.recetteService.getRecetteList().subscribe(liste=>this.recetteList = liste);
     console.table(this.recetteList);
     // this.selectRecette(this.recetteList[0]);
   }
@@ -32,5 +36,10 @@ export class ListeRecetteComponent implements OnInit{
       console.log("Aucune recette correspondante");
     }
     this.recetteSelected = recette;
+  }
+
+  goToRecette(recette: Recette)
+  {
+    this.router.navigate(["/recette", recette.id]);
   }
 }

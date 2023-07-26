@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RECETTES } from '../RecetteList';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recette } from '../Recette';
+import { RecetteService } from '../recette.service';
 
 @Component({
   selector: 'app-detail-recette',
@@ -9,10 +9,9 @@ import { Recette } from '../Recette';
   styleUrls: ['./detail-recette.component.scss']
 })
 export class DetailRecetteComponent implements OnInit {
-  recetteList: Recette[] = RECETTES;
   recette?: Recette;
 
-  constructor(private route: ActivatedRoute){}
+  constructor(private route: ActivatedRoute, private router: Router, private recetteService: RecetteService){}
 
   ngOnInit(): void {
     /* 
@@ -24,8 +23,21 @@ export class DetailRecetteComponent implements OnInit {
     const recetteId: number = parseInt(this.route.snapshot.paramMap.get("id")??"");
     console.log(recetteId);
     
-    this.recette = this.recetteList.find(rec=>rec.id===recetteId);
+    this.recetteService.getRecetteById(recetteId).subscribe(recette=>this.recette = recette);
     console.log(this.recette);
     
+  }
+  goToRecetteListe()
+  {
+    this.router.navigate(["/recettes"]);
+  }
+  goToEditRecette()
+  {
+    this.router.navigate(["/recette/edit", this.recette?.id])
+  }
+  deleteRecette()
+  {
+    if(!this.recette)return
+    this.recetteService.deleteRecetteById(this.recette.id!).subscribe(()=>this.goToRecetteListe());
   }
 }
