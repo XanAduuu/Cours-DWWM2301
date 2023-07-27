@@ -35,7 +35,7 @@ class UserModel extends AbstractModel
      */
     function getOneUserById(int $id): array|false
     {
-        $sql = $this->pdo->prepare('SELECT * FROM users WHERE idUser=:?');
+        $sql = $this->pdo->prepare('SELECT * FROM users WHERE idUser=?');
         $sql->execute([$id]);
         return $sql->fetch();
     }
