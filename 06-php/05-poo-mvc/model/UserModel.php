@@ -22,7 +22,7 @@ class UserModel extends AbstractModel
     {
         $sql = $this->pdo->prepare("SELECT * FROM users WHERE email = :em");
         $sql->execute([':em' => $email]);
-        return $sql->fetch;
+        return $sql->fetch();
     }
     /**
      * Selectionne un utilisateur par son ID
