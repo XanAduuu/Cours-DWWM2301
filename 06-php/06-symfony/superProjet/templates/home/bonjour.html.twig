@@ -1,0 +1,8 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<p>
+    Bonjour {{prenom ~" " ~ nom}}.
+</p>
+<a href="{{ path("bonjour",{nom:"Fontaine", prenom:"Jean"} ) }}">Dire Bonjour à Jean Fontaine</a>
+{% endblock %}
