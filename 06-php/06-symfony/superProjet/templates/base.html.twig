@@ -13,6 +13,15 @@
     </head>
     <body>
         {% include "layout/_header.html.twig" with {header: block("header")??""} %}
+        <div class="container">
+            {% for label, messages in app.flashes %}
+                {% for m in messages %}
+                    <div class="alert alert-{{label}}">
+                        {{m}}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
         {% block body %}{% endblock %}
         {% include "layout/_footer.html.twig" %}
     </body>
