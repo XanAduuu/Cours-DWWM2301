@@ -45,4 +45,15 @@ class VilleRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findByPopulationInterval($min, $max)
+    {
+        return $this->createQueryBuilder("v")
+            ->andWhere("v.population BETWEEN :min AND :max")
+            ->setParameter("min", $min)
+            ->setParameter("max", $max)
+            // ->setParameters(["min"=>$min, "max"=>$max])
+            ->orderBy("v.population", "ASC")
+            ->getQuery()
+            ->getResult();
+    }
 }

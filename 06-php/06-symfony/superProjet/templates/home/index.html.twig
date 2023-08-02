@@ -4,6 +4,10 @@
 {% block body %}
 <h1>{{ controller_name | upper }}</h1>
 
+<nav>
+    <a href="{{ path("readVille")}}"><strong>Liste des Villes</strong></a>
+</nav>
+
 {{ pays.france }}
 <br>
 {{ pays.angleterre | reverse}}
