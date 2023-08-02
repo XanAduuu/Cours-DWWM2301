@@ -5,6 +5,8 @@
     Puis disparaître, changer le texte, faire réaparaître la barre 
     Puis refaire le slide depuis les barres avec le nouveau texte.
 */
+<<<<<<< HEAD
+=======
 const spans = document.querySelectorAll('span');
 
 function blink()
@@ -26,3 +28,4 @@ async function anime2(sp)
     indent.play();
 }
 blink();
+>>>>>>> 7f01d68f7548e99f55404d158c660193d4434910

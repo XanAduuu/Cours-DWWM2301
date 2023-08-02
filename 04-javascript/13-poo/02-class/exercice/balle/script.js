@@ -17,10 +17,8 @@ canvas.addEventListener("click", ()=>balles.push(new B(canvas)));
 
 function animation()
 {
-    ctx.clearRect(0,0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     balles.forEach(balle=>balle.draw());
     requestAnimationFrame(animation);
-
 }
-// setInterval(animation, 10)
 animation();

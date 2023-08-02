@@ -3,12 +3,7 @@ namespace Classes;
 
 abstract class AbstractController
 {
-    /**
-     * Affiche les messages flash.
-     *
-     * @return void
-     */
-    protected function getFlash(): void
+    protected function getFlash()
     {
         if(isset($_SESSION["flash"]))
         {
@@ -16,17 +11,19 @@ abstract class AbstractController
             unset($_SESSION ["flash"]);
         }
     }
+
     /**
-     * Paramètre un message flash.
-     *
+     * Paramètre un message flash
+     * 
      * @param string $flash
      * @return void
+     * 
      */
     protected function setFlash(string $flash): void
     {
-        $_SESSION["flash"] = $flash;
+        $_SESSION ['flash'] = $flash;
     }
-    protected function render(string $view, array $options = []):void
+    protected function render (string $view, array $options = []): void
     {
         foreach($options as $op=>$val)
         {
@@ -37,7 +34,7 @@ abstract class AbstractController
                     $title = $val;
                     break;
                 default:
-                    $$op = $val;
+                    $$op=$val;
             }
         }
         require __DIR__. "/../../ressources/template/_header.php";

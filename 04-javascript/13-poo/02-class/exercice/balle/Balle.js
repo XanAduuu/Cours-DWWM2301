@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 export default class Balle
 {
@@ -31,7 +31,7 @@ export default class Balle
         const ctx = this.ctx;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
-        ctx.strokeStyle = this.color;
+        ctx.stokeStyle = this.color;
         ctx.fillStyle = this.color;
         ctx.fill();
         ctx.stroke();
@@ -50,4 +50,5 @@ export default class Balle
         this.x += this.vx;
         this.y += this.vy;
     }
+
 }

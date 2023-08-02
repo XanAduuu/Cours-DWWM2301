@@ -1,5 +1,5 @@
-<?php 
-const ROUTES = [
+<?php
+const ROUTES =[
     "05-poo-mvc"=>[
         "controller"=>"UserController",
         "fonction"=>"read"
@@ -41,4 +41,5 @@ const ROUTES = [
         "fonction"=>"logout"
     ]
 ];
+
 ?>

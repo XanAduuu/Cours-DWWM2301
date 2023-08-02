@@ -1,15 +1,17 @@
 "use strict";
 
-class Truc
+class Truc 
 {
-    /* 
-        Alors que JS est limité aux propriétés (et méthodes) public et private (avec un "#"),
-        TS peut déclarer avec les mots clefs suivant,
-            Les propriétés (et méthode) en "public", "private" et "protected".
-        Si les deux premières ne changent pas de JS,
-        protected est hérité comme les "public" mais accessible uniquement à l'interieur de la classe comme les "private"
 
-        Comme tout ajout de TS, ce n'est pas traduit en JS
+    /* 
+        Alors que JS est limité aux proprités et méthode public et private (avec un "#")
+        TS peut déclarer avec les mots clef suivants :
+            Les propriétés (et méthodes) en "public", "private" et "protected".
+        Si les deux premières ne changent pas de JS,
+        protected est hérité comme les "public" mais accessible uniquement à l'intérieur de la classe comme les "private"
+
+        Comme tout ajout de TS, ce n'est pas traduit en JS.
+    
     */
     public prenom = "Maurice";
     protected nom = "Dupont";
@@ -30,10 +32,10 @@ class Machin extends Truc
         // this.age;
     }
     /* 
-        Si "this" vaut normalement l'objet dans lequel il se trouve,
-        Dans certains cas comme l'ajout d'un event listener,
+        Si "this" vaut normalement l'objet dans lequel il se trouve 
+        Dans certains cas comme l'ajout d'un event listener
         "this" peut valoir autre chose.
-        On peut donc préciser le type de "this" en l'ajoutant entre les parenthèses de la methode, comme ci il était un argument.
+        On peut donc préciser le type de "this" en l'ajoutant entre les parenthèses de la méthodes, comme si il était un argument.
     */
     faireUnTruc(this:HTMLElement)
     {
@@ -43,22 +45,24 @@ class Machin extends Truc
 
 /* 
     On va pouvoir aussi utiliser les generics sur des classes.
+
 */
+
 class Collection<T>
 {
     /* 
         En plaçant l'accesseur "private" directement en argument,
-        Cela me permet d'indiquer à TS, de créer automatiquement une propriété private qui contiendra mon argument.
+        Cela me permet d'indiquer à TS, de créer automatiquement un propriété private qui contiendra mon argument;
         C'est l'équivalent à écrire :
-            private items;
-            constructor(items: T[])
-            {
-                this.items = items;
-            }
+        private items;
+        constructor(items: T[])
+        {
+            this.items = items;
+        }
     */
     constructor(private items: T[]){}
 
-    addOne(arg: T):this
+    addOne(arg: T): this
     {
         this.items.push(arg);
         return this;
@@ -69,20 +73,24 @@ class Collection<T>
         return this;
     }
 }
-const c = new Collection([5,2,9,8]);
-/* 
-    Petite astuce de POO, qui n'est pas liée à TS,
 
-    Lorsqu'un méthode n'a rien à retourner,
-    C'est un classique de la faire retourner "this",
-    cela afin que la méthode retourne l'objet lui même,
-    et qu'on puisse "chaîner les méthodes"
-*/
-c.addOne(42).addMore([23, 34]).addOne(98);
+const c =  new Collection([5,2,9,8]);
 /* 
-    Notre collection a été instancié avec un tableau de nombre,
-    Ses méthodes n'accepterons du coup, que des nombres.
+    petite astuce de POO, qui n'est pas liée à TS,
+
+    Lorsqu'une méthode n'a rien à retourner
+    C'est un classique de la faire retourner "this",
+    Cela afin que la méthode retourne l'objet lui même
+    et qu'on puisse "chainer les méthodes"
 */
+
+c.addOne(42).addMore([23, 34]).addOne(98);
+
+/* 
+    Notre collection a été instanciée avec un tableau de nombres,
+    Ses méthodes n'accepteront du coup, que des nombres.
+*/
+
 class Triangle
 {
     c1 = 5;
@@ -100,23 +108,27 @@ function getC1(arg: Rectangle)
 }
 /* 
     Selon TS, Triangle est un Rectangle
-    Lorsque l'on donne une classe comme type d'un argument.
-    TS va seulement vérifier si toute les propriétés sont présente.
+    Lorsqu'on donne une classe comme type d'un argument
+    TS va seulement vérifier si toutes les propriétés sont présentes
     Rectangle possède c1 et c2,
-    Il attend donc un objet avec au moins ces même propriétés.
-    Triangle possède c1 et c2, peu importe si c3 est présent, cela reste valide
+    Il attend donc un objet avec aumoins ces mêmes propriétés
+    Triangle posséde c1 et c2, peu importe si c3 est présent, cela reste valide.
+
 */
 getC1(new Rectangle());
 // getC1(34);
 getC1(new Triangle());
+
 /* 
-    Une classe abstraite, est une classe qui ne peut pas être instancié.
-    Son unique rôle est donc d'être hérité.
-    Elle peut aussi contenir des methodes abstraite
-    C'est uné méthode dont on défini les arguments, la valeur de retour,
-    Mais pas son fonctionnement.
+    Une classe abstraite est une classe qui ne peut pas être instanciée
+    Son unique rôle est donc d'être héritée.
+    Elle peut aussi contenir des méthodes abstraites
+    C'est une méthode dont on définit les arguments, la valeur de retour,
+    mais pas son fonctionnement.
     Elle sera à définir dans l'héritier.
+
 */
+
 abstract class Polygone
 {
     sides: {[key:string]: number}= {}
@@ -128,18 +140,19 @@ abstract class Polygone
 }
 // new Polygone();
 
-class Carre extends Polygone
-{
+class Carre extends Polygone{
     constructor(c: number)
     {
         super();
         this.sides.c = c;
     }
-    surface(): number 
+
+    surface(): number
     {
         return this.sides.c * this.sides.c
     }
 }
+
 const square = new Carre(5);
 console.log(square.surface());
 console.log(square.countSide());

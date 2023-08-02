@@ -1,5 +1,5 @@
 <p>
-    Votre compte a bien été <strong>SUPPRIMÉ</strong>.
+    Votre compte a bien été <strong>SUPPRIME</strong>.
     <br>
     Vous allez être redirigé d'ici peu.
 </p>

@@ -19,3 +19,4 @@ export class EditRecetteComponent implements OnInit {
     this.recetteService.getRecetteById(recetteId).subscribe(recette=>this.recette = recette);
   }
 }
+

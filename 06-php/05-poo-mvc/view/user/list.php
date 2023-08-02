@@ -11,22 +11,21 @@
             <?php foreach ($users as $user) :?>
                 <tr>
                     <td><?= $user['idUser']?></td>
-                    <!-- <td><?php /* echo $user['idUser'] */?></td> -->
                     <td><?= $user["username"] ?></td>
                     <td>
                         <a href="/05-poo-mvc/messages?id=<?= $user["idUser"]?>">Voir</a>
                         <!-- On affiche ces liens uniquement si la ligne correspond à l'utilisateur connecté : -->
                         <?php if(isset($_SESSION["idUser"]) && $_SESSION["idUser"] == $user["idUser"]): ?>
                             &nbsp;|&nbsp;
-                            <a href="/05-poo-mvc/user/update?id=<?= $user["idUser"]?>">Éditer</a>
+                            <a href="/05-poo-mvc/user/update?id=<?=$user["idUser"]?>">Editer</a>
                             &nbsp;|&nbsp;
-                            <a href="/05-poo-mvc/user/delete?id=<?= $user["idUser"]?>">Supprimer</a>
+                            <a href="/05-poo-mvc/user/delete?id=<?=$user["idUser"]?>">Supprimer</a>
                         <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-<?php else: ?>
+    <?php else : ?>
     <p>Aucun utilisateur trouvé</p>
-<?php endif; ?>
+<?php endif;?>

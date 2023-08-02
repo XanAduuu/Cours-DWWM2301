@@ -66,3 +66,9 @@ async function hello()
     salutation.coucou("Pierre")
     salutation.salut();
 }
+    /*
+        On notera que "export default" est rangé dans la propriét "default"
+    */
+    salutation.default();
+    salutation.coucou("Pierre")
+    salutation.salut();

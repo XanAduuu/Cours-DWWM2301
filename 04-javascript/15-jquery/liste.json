@@ -1,6 +1,10 @@
 [
     "banane",
     "pizza",
+<<<<<<< HEAD
+    "cacahuete",
+=======
     "cacahuète",
+>>>>>>> 24655cf326b90f96d12acf096b781d50603be2b0
     "aubergine"
 ]
