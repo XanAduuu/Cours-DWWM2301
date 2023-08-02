@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent()}} - Accueil{% endblock %}
+
+{% block body %}
+<h1>{{ controller_name | upper }}</h1>
+
+<nav>
+    <a href="{{ path("readVille")}}"><strong>Liste des Villes</strong></a>
+</nav>
+
+{{ pays.france }}
+<br>
+{{ pays.angleterre | reverse}}
+<br>
+
+<strong>
+    {% if chiffre > 5 %}
+        {{ chiffre }} est plus grand que 5.
+    {% elseif chiffre < 5 %}
+        {{ chiffre }} est plus petit que 5.
+    {% else %}
+        Votre chiffre est 5.
+    {% endif %}
+</strong>
+<ul>
+    {% for f in fruits %}
+        <li>{{ f }}</li>
+    {% endfor %}
+</ul>
+
+{% for v in vide %}
+    Le tableau étant vide, cela ne s'affichera pas.
+{% else %}
+    Aucun élément n'a été trouvé dans le tableau "vide".
+{% endfor %}
+<br>
+{{ area(534,17) | price("$", false) }}
+
+{% endblock %}
