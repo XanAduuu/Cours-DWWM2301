@@ -3,13 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\VilleRepository;
-use Doctrine\DBAL\Types\Types;
+use App\Traits\TimeStampTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VilleRepository::class)]
 #[ORM\HasLifecycleCallbacks()]
 class Ville
 {
+    use TimeStampTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -20,8 +22,6 @@ class Ville
 
     #[ORM\Column]
     private ?int $population = null;
-
-    
 
     #[ORM\OneToOne(mappedBy: 'chefLieu', cascade: ['persist', 'remove'])]
     private ?Departement $chefLieu = null;
@@ -58,8 +58,6 @@ class Ville
 
         return $this;
     }
-
-    
 
     public function getChefLieu(): ?Departement
     {

@@ -3,14 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\DepartementRepository;
+use App\Traits\TimeStampTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DepartementRepository::class)]
+#[ORM\HasLifecycleCallbacks()]
 class Departement
 {
+    use TimeStampTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -27,12 +31,6 @@ class Departement
 
     #[ORM\OneToMany(mappedBy: 'departement', targetEntity: Ville::class)]
     private Collection $Villes;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $createdAt = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $EditedAt = null;
 
     public function __construct()
     {
@@ -106,30 +104,6 @@ class Departement
                 $ville->setDepartement(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): static
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getEditedAt(): ?\DateTimeInterface
-    {
-        return $this->EditedAt;
-    }
-
-    public function setEditedAt(?\DateTimeInterface $EditedAt): static
-    {
-        $this->EditedAt = $EditedAt;
 
         return $this;
     }

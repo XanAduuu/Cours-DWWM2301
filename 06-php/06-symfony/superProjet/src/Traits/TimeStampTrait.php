@@ -35,6 +35,7 @@ trait TimeStampTrait
 
         return $this;
     }
+    
     #[ORM\PreUpdate]
     public function onPreUpdate()
     {
@@ -47,5 +48,4 @@ trait TimeStampTrait
         $this->createdAt = new \DateTimeImmutable();
     }
 }
-
 ?>
