@@ -9,6 +9,8 @@
     {% if ville.editedAt %}
         <br>
         Cette fiche a été édité le {{ville.editedAt | date}}.
-    {% endif %}
 </p>
+    {% else %}
+    <p>Aucune ville correspondante/</p>
+    {% endif %}
 {% endblock %}

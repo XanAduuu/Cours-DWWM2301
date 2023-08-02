@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VilleRepository::class)]
+#[ORM\HasLifecycleCallbacks()]
 class Ville
 {
     #[ORM\Id]
@@ -20,11 +21,14 @@ class Ville
     #[ORM\Column]
     private ?int $population = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $editedAt = null;
+    #[ORM\OneToOne(mappedBy: 'chefLieu', cascade: ['persist', 'remove'])]
+    private ?Departement $chefLieu = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Villes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Departement $departement = null;
 
     public function getId(): ?int
     {
@@ -55,27 +59,40 @@ class Ville
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    
+
+    public function getChefLieu(): ?Departement
     {
-        return $this->createdAt;
+        return $this->chefLieu;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setChefLieu(?Departement $chefLieu): static
     {
-        $this->createdAt = $createdAt;
+        // unset the owning side of the relation if necessary
+        if ($chefLieu === null && $this->chefLieu !== null) {
+            $this->chefLieu->setChefLieu(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($chefLieu !== null && $chefLieu->getChefLieu() !== $this) {
+            $chefLieu->setChefLieu($this);
+        }
+
+        $this->chefLieu = $chefLieu;
 
         return $this;
     }
 
-    public function getEditedAt(): ?\DateTimeInterface
+    public function getDepartement(): ?Departement
     {
-        return $this->editedAt;
+        return $this->departement;
     }
 
-    public function setEditedAt(?\DateTimeInterface $editedAt): static
+    public function setDepartement(?Departement $departement): static
     {
-        $this->editedAt = $editedAt;
+        $this->departement = $departement;
 
         return $this;
     }
+    
 }
