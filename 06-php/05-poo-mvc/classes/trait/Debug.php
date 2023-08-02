@@ -1,5 +1,4 @@
 <?php 
-
 namespace Classes\Trait;
 
 trait Debug
@@ -37,5 +36,4 @@ trait Debug
         die;
     }
 }
-
 ?>

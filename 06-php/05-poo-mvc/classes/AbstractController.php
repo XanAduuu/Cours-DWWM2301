@@ -42,5 +42,4 @@ abstract class AbstractController
         require __DIR__. "/../../ressources/template/_footer.php";
     }
 }
-
 ?>
