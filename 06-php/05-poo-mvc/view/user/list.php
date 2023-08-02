@@ -14,7 +14,7 @@
                     <!-- <td><?php /* echo $user['idUser'] */?></td> -->
                     <td><?= $user["username"] ?></td>
                     <td>
-                        <a href="/05-poo-mvc/message/list?id=<?= $user["idUser"]?>">Voir</a>
+                        <a href="/05-poo-mvc/messages?id=<?= $user["idUser"]?>">Voir</a>
                         <!-- On affiche ces liens uniquement si la ligne correspond à l'utilisateur connecté : -->
                         <?php if(isset($_SESSION["idUser"]) && $_SESSION["idUser"] == $user["idUser"]): ?>
                             &nbsp;|&nbsp;
