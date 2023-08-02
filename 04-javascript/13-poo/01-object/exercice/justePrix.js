@@ -1,46 +1,51 @@
-const justePrix = {
-    create()
-    {
-        const div = document.createElement("div");
-        div.classList.add("container");
+"use strict";
+const JustePrix = {
+    myProperty: "Juste Prix",
 
-        const input = document.createElement("input");
+    myJustePrix(){
+
+        const container = document.createElement("div");
+        container.classList.add("container");
+        
+
         const p1 = document.createElement("p");
-        const p2 = document.createElement("p");
+        p1.innerHTML = "Veuillez entrer un chiffre entre 0 et 20.";
 
-        this.p2 = p2;
-        div.append(p1, input, p2);
+        const input= document.createElement("input");
+        input.classList.add("input");
 
-        const container = document.querySelector(".appli");
-        container.append(div);
+        const p2 = document.createElement("p")
+        p2.classList.add("p");
 
-        p1.innerHTML = "Veuillez entrer un chiffre entre 0 et 20";
+        container.append(p1, input, p2);
+        return container;
     },
-    get random()
-    {
-        if(!justePrix.target)
-        {
-            justePrix.target = Math.floor(Math.random()*20);
-        }
-        return justePrix.target;
-    },
-    check()
-    {
-        let random = justePrix.random;
-        let numberUser = this.value;
 
-        if(numberUser > random)
-        {
-            justePrix.p2.textContent = "C'est moins";
-        }
-        else if(numberUser < random)
-        {
-            justePrix.p2.textContent = "C'est plus";
-        }
-        else
-        {
-            justePrix.p2.textContent = "C'est gagné !";
-        }
+    getNumber()
+    {
+        let x = Math.floor(Math.random()*20);
+        return x;
+    },
+
+    startJ(){
+
+        if(x < 10)
+    {
+        console.log(x + " est plus petit que 10");
     }
-}
-export default justePrix;
+
+    else if(x > 10)
+    {
+        console.log(x + " est plus grand que 10");
+    }
+
+    else
+    {
+        console.log("x vaut 10");
+    }
+
+    }
+
+};
+
+export default JustePrix;
