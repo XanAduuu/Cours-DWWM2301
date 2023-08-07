@@ -3,19 +3,24 @@
 namespace App\Controller;
 
 use App\Entity\Ville;
+use App\Form\VilleType;
 use App\Repository\VilleRepository;
+use App\Service\Uploader;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/ville')]
 class VilleController extends AbstractController
 {
+    public function __construct(private Uploader $uploader){}
+
     #[Route('/add', name: 'add_ville')]
-    public function create(ManagerRegistry $doc): Response
+    public function create(ManagerRegistry $doc, Request $request): Response
     {
-        $em = $doc->getManager();
+/*         $em = $doc->getManager();
         $ville = new Ville();
         $ville  ->setNom("Lille")
                 ->setPopulation(234475)
@@ -30,7 +35,30 @@ class VilleController extends AbstractController
         
         $em->flush();
 
-        return $this->redirectToRoute("readVille");
+        return $this->redirectToRoute("readVille");*/
+
+        $ville = new Ville();
+        $form = $this->createForm(VilleType::class, $ville);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {   
+            $photo = $form->get("photoFile")->getData();
+            if($photo)
+            {
+                $dir = $this->getParameter("ville_directory");
+                $ville->setPhoto($this->uploader->uploadFile($photo, $dir));
+            }
+            dump($ville);
+            $em = $doc->getManager();
+            $em->persist($ville);
+            $em->flush();
+
+            $this->addFlash("success", "Une nouvelle ville a bien été ajoutée");
+            return $this->redirectToRoute("readVille");
+        }
+
+        return $this->render("ville/create.html.twig", ["villeForm"=> $form->createView()]);
     }
     #[Route("/delete/{id<\d+>}", name: "deleteVille")]
     public function delete(Ville $ville=null, ManagerRegistry $doc): Response
@@ -40,13 +68,17 @@ class VilleController extends AbstractController
             $em = $doc->getManager();
             $em->remove($ville);
             $em->flush();
-            $this->addFlash("danger", "la ville a bien été supprimée");
+            $this->addFlash("danger", "La ville a bien été supprimée");
         }
         return $this->redirectToRoute("readVille");
     }
-    #[Route("/update/{id<\d+>}/{nom}/{pop<\d+>}", name: "updateVille")]
-    public function update(Ville $ville, ManagerRegistry $doc, $nom, $pop):Response
+    // #[Route("/update/{id<\d+>}/{nom}/{pop<\d+>}", name: "updateVille")]
+
+    #[Route("/update/{id<\d+>}", name: "updateVille")]
+    public function update(Ville $ville=null, ManagerRegistry $doc, Request $request):Response
     {
+
+    /*        
         if($ville)
         {
             $ville  ->setNom($nom)
@@ -56,7 +88,35 @@ class VilleController extends AbstractController
             $em->flush();
             $this->addFlash("warning", "La ville a été mis à jour");
         }
+     */
+    
+    if(!$ville)
+    {
+        $this->addFlash("danger", "Aucune ville sélectionnée.");
+        return $this->redirectToRoute('readVille');
+    }
+    $form = $this->createForm(VilleType::class, $ville);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid())
+    {   
+        $photo = $form->get("photoFile")->getData();
+            if($photo)
+            {
+                $dir = $this->getParameter("ville_directory");
+                $ville->setPhoto($this->uploader->uploadFile($photo, $dir));
+            }
+
+        $em = $doc->getManager();
+        $em->persist($ville);
+        $em->flush();
+
+        $this->addFlash("success", "La ville a bien été éditée");
         return $this->redirectToRoute("detailVille", ["id"=>$ville->getId()]);
+    }
+    return $this->render("ville/create.html.twig", ['villeForm'=>$form->createView()]);
+
+
+
     }
     #[Route("/detail/{id<\d+>}", name: "detailVille")]
     // public function detail(ManagerRegistry $doc, $id):Response
